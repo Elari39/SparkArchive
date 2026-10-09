@@ -16,6 +16,8 @@
 ## 快速开始
 
 ```bash
+git clone https://github.com/Elari39/SparkArchive.git
+cd SparkArchive
 docker compose up -d --build
 ```
 
