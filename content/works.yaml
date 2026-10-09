@@ -1,0 +1,235 @@
+# 著作库：精选原文摘录 + 书目索引
+works:
+  - slug: communist-manifesto
+    person: marx
+    title: 共产党宣言
+    year: 1848
+    category: 纲领
+    summary: 马克思主义诞生的标志性文献，系统阐述阶级斗争学说与共产主义主张。
+    source: 马克思、恩格斯《共产党宣言》，人民出版社
+    source_url: https://www.marxists.org/chinese/marx/01.htm
+    excerpts:
+      - text: 至今一切社会的历史都是阶级斗争的历史。
+        note: 第一章《资产者和无产者》开篇论断。
+      - text: 资产阶级在历史上曾经起过非常革命的作用。
+        note: 第一章对资产阶级历史作用的辩证评价。
+      - text: 无产阶级是资产阶级的掘墓人。
+        note: 第一章对两大阶级历史命运的判断。
+      - text: 代替那存在着阶级和阶级对立的资产阶级旧社会的，将是这样一个联合体，在那里，每个人的自由发展是一切人的自由发展的条件。
+        note: 第二章结尾，共产主义社会的根本特征。
+      - text: 全世界无产者，联合起来！
+        note: 全书结语，国际主义的口号。
+  - slug: capital-vol1
+    person: marx
+    title: 资本论（第一卷）
+    year: 1867
+    category: 政治经济学
+    summary: 系统阐述剩余价值理论，揭示资本主义生产方式的内在矛盾与历史趋势。
+    source: 马克思《资本论》第一卷，人民出版社
+    source_url: https://www.marxists.org/chinese/marx/capital/index.htm
+    excerpts:
+      - text: 资本来到世间，从头到脚，每个毛孔都滴着血和肮脏的东西。
+        note: 第二十四章《所谓原始积累》。
+      - text: 商品的价值由生产商品所耗费的社会必要劳动时间决定。
+        note: 第一卷第一篇劳动价值论的核心命题。
+      - text: 剥夺者就要被剥夺。
+        note: 第二十四章对资本主义积累历史趋势的结论。
+  - slug: critique-gotha
+    person: marx
+    title: 哥达纲领批判
+    year: 1875
+    category: 政治理论
+    summary: 明确提出过渡时期与无产阶级专政理论。
+    source: 马克思《哥达纲领批判》，人民出版社
+    source_url: https://www.marxists.org/chinese/marx/marxist.org-chinese-marx-1875.htm
+    excerpts:
+      - text: 在资本主义社会和共产主义社会之间，有一个从前者变为后者的革命转变时期。同这个时期相适应的也有一个政治上的过渡时期，这个时期的国家只能是无产阶级的革命专政。
+        note: 对过渡时期国家性质的根本论断。
+      - text: 各尽所能，按需分配！
+        note: 对共产主义高级阶段分配原则的表述。
+  - slug: condition-working-class
+    person: engels
+    title: 英国工人阶级状况
+    year: 1845
+    category: 社会调查
+    summary: 以亲身调查揭露工业革命后英国工人阶级的悲惨处境。
+    source: 恩格斯《英国工人阶级状况》，人民出版社
+    source_url: https://www.marxists.org/chinese/marx-engels/02/index.htm
+    excerpts:
+      - text: 工人阶级的状况是当代一切社会运动的真正基础和出发点。
+        note: 序言中对研究工人阶级状况意义的说明。
+      - text: 这些工人几乎全都身体衰弱，面色苍白，……他们的处境比奴隶还要恶劣。
+        note: 对曼彻斯特工人居住与健康状况的实地描述。
+  - slug: anti-duhring
+    person: engels
+    title: 反杜林论
+    year: 1878
+    category: 哲学
+    summary: 系统阐述辩证唯物主义与科学社会主义三个组成部分。
+    source: 恩格斯《反杜林论》，人民出版社
+    source_url: https://www.marxists.org/chinese/marx-engels/20/index.htm
+    excerpts:
+      - text: 辩证法不过是关于自然、人类社会和思维的运动和发展的普遍规律的科学。
+        note: 对辩证法对象的经典定义。
+      - text: 没有革命的理论，就不会有革命的运动。
+        note: 论理论对革命运动的意义。
+  - slug: origin-family
+    person: engels
+    title: 家庭、私有制和国家的起源
+    year: 1884
+    category: 社会理论
+    summary: 论证阶级、私有制与国家的起源，开创马克思主义妇女观。
+    source: 恩格斯《家庭、私有制和国家的起源》，人民出版社
+    source_url: https://www.marxists.org/chinese/marx-engels/21/index.htm
+    excerpts:
+      - text: 国家并不是从来就有的。曾经有过不需要国家、而且根本不知国家和国家权力为何物的社会。
+        note: 第九章《野蛮时代和文明时代》。
+      - text: 随着阶级的消失，国家也不可避免地要消失。
+        note: 论国家消亡的历史必然性。
+  - slug: what-is-to-be-done
+    person: lenin
+    title: 怎么办？
+    year: 1902
+    category: 政党理论
+    summary: 提出先锋队理论，主张建立职业革命家组织。
+    source: 列宁《怎么办？》，人民出版社
+    source_url: https://www.marxists.org/chinese/lenin/1902.htm
+    excerpts:
+      - text: 没有革命的理论，就不会有革命的运动。
+        note: 第一章对理论作用的论断。
+      - text: 给我们一个革命家组织，我们就能把俄国翻转过来！
+        note: 全书结尾的名言。
+  - slug: imperialism
+    person: lenin
+    title: 帝国主义是资本主义的最高阶段
+    year: 1916
+    category: 政治经济学
+    summary: 论证帝国主义五大特征，提出社会主义革命可能在一国首先胜利。
+    source: 列宁《帝国主义是资本主义的最高阶段》，人民出版社
+    source_url: https://www.marxists.org/chinese/lenin/1916.htm
+    excerpts:
+      - text: 帝国主义是资本主义发展的最高阶段。
+        note: 全书的基本命题。
+      - text: 帝国主义是无产阶级社会革命的前夜。
+        note: 结论部分的核心判断。
+      - text: 经济和政治发展的不平衡是资本主义的绝对规律。由此就应得出结论：社会主义可能首先在少数甚至在单独一个资本主义国家内获得胜利。
+        note: 对革命道路的重大发展。
+  - slug: state-and-revolution
+    person: lenin
+    title: 国家与革命
+    year: 1917
+    category: 政治理论
+    summary: 系统论证打碎资产阶级国家机器与无产阶级专政的必要性。
+    source: 列宁《国家与革命》，人民出版社
+    source_url: https://www.marxists.org/chinese/lenin/1917.htm
+    excerpts:
+      - text: 国家是阶级矛盾不可调和的产物和表现。
+        note: 第一章对国家本质的界定。
+      - text: 工人阶级不能简单地掌握现成的国家机器，并运用它来达到自己的目的。
+        note: 引马克思语，论证打碎旧国家机器。
+  - slug: on-practice
+    person: mao
+    title: 实践论
+    year: 1937
+    category: 哲学
+    summary: 从马克思主义认识论高度总结中国革命经验，批判教条主义。
+    source: 毛泽东《实践论》，《毛泽东选集》第一卷
+    source_url: https://www.marxists.org/chinese/maozedong/index.htm
+    excerpts:
+      - text: 实践、认识、再实践、再认识，这种形式，循环往复以至无穷，而实践和认识之每一循环的内容，都比较地进到了高一级的程度。
+        note: 全文结论，对认识运动总规律的概括。
+      - text: 真理的标准只能是社会的实践。
+        note: 对真理检验标准的规定。
+  - slug: on-contradiction
+    person: mao
+    title: 矛盾论
+    year: 1937
+    category: 哲学
+    summary: 系统阐述对立统一规律，提出具体问题具体分析的方法论。
+    source: 毛泽东《矛盾论》，《毛泽东选集》第一卷
+    source_url: https://www.marxists.org/chinese/maozedong/index.htm
+    excerpts:
+      - text: 事物的矛盾法则，即对立统一的法则，是唯物辩证法的最根本的法则。
+        note: 全文的基本命题。
+      - text: 具体问题具体分析，是马克思主义活的灵魂。
+        note: 论矛盾特殊性的方法论结论。
+  - slug: on-protracted-war
+    person: mao
+    title: 论持久战
+    year: 1938
+    category: 军事理论
+    summary: 科学预判抗日战争三个阶段，驳斥"亡国论"与"速胜论"。
+    source: 毛泽东《论持久战》，《毛泽东选集》第二卷
+    source_url: https://www.marxists.org/chinese/maozedong/index.htm
+    excerpts:
+      - text: 战争的伟力之最深厚的根源，存在于民众之中。
+        note: 对人民战争根本原理的表述。
+      - text: 抗日战争是持久战，最后胜利是中国的。
+        note: 全书的核心结论。
+  - slug: on-new-democracy
+    person: mao
+    title: 新民主主义论
+    year: 1940
+    category: 政治理论
+    summary: 系统论证中国革命分两步走，阐明新民主主义的政治、经济、文化纲领。
+    source: 毛泽东《新民主主义论》，《毛泽东选集》第二卷
+    source_url: https://www.marxists.org/chinese/maozedong/index.htm
+    excerpts:
+      - text: 新民主主义的革命，是无产阶级领导的、人民大众的、反对帝国主义、封建主义和官僚资本主义的革命。
+        note: 对新民主主义革命性质的完整界定。
+      - text: 民族的科学的大众的文化，就是人民大众反帝反封建的文化。
+        note: 论新民主主义文化的特征。
+  - slug: yanan-talks
+    person: mao
+    title: 在延安文艺座谈会上的讲话
+    year: 1942
+    category: 文艺理论
+    summary: 确立文艺为人民大众、首先为工农兵服务的根本方针。
+    source: 毛泽东《在延安文艺座谈会上的讲话》，《毛泽东选集》第三卷
+    source_url: https://www.marxists.org/chinese/maozedong/index.htm
+    excerpts:
+      - text: 为什么人的问题，是一个根本的问题，原则的问题。
+        note: 引言中对文艺根本问题的提法。
+      - text: 我们的文艺，第一是为工人的，第二是为农民的。
+        note: 对文艺服务对象的明确规定。
+  - slug: on-ten-relationships
+    person: mao
+    title: 论十大关系
+    year: 1956
+    category: 经济建设
+    summary: 论述社会主义建设中十大关系，探索中国自己的建设道路。
+    source: 毛泽东《论十大关系》，《毛泽东文集》第七卷
+    source_url: https://www.marxists.org/chinese/maozedong/index.htm
+    excerpts:
+      - text: 最近苏联方面暴露了他们在建设社会主义过程中的一些缺点和错误，他们走过的弯路，你还想走？
+        note: 提出"以苏为鉴"的著名论述。
+      - text: 我们一定要努力把党内党外、国内国外的一切积极的因素，直接的、间接的积极因素，全部调动起来，把我国建设成为一个强大的社会主义国家。
+        note: 全文结语，提出调动一切积极因素的基本方针。
+  - slug: guerrilla-warfare
+    person: guevara
+    title: 游击战
+    year: 1960
+    category: 军事理论
+    summary: 总结古巴革命经验，提出游击中心主义理论。
+    source: 切·格瓦拉《游击战》，上海人民出版社
+    source_url: https://www.marxists.org/chinese/che/index.htm
+    excerpts:
+      - text: 游击战是人民的战争，人民是游击队赖以生存的基础。
+        note: 论游击战与人民群众的关系。
+      - text: 游击战士首先应当是人民的解放者，其次才是战士。
+        note: 对游击战士政治品格的界定。
+  - slug: man-and-socialism
+    person: guevara
+    title: 古巴的人与社会主义
+    year: 1965
+    category: 政治理论
+    summary: 批判物质激励与官僚化倾向，提出塑造"社会主义新人"。
+    source: 切·格瓦拉《古巴的人与社会主义》
+    source_url: https://www.marxists.org/chinese/che/index.htm
+    excerpts:
+      - text: 社会主义不是慈善事业，也不是"平均主义"，而是在消灭剥削的基础上实现人的全面发展。
+        note: 对社会主义本质的界定。
+      - text: 要造就新人，就必须从根本上改变生产关系，同时改变人的意识。
+        note: 论新人塑造的两个方面。
+      - text: 我们革命者最根本的任务，就是创造新人。
+        note: 全文的核心主张。

@@ -1,0 +1,27 @@
+# 统一换行符：仓库内一律用 LF，避免跨平台 diff 噪音
+* text=auto eol=lf
+
+# 显式声明语言（GitHub 统计与语法高亮）
+*.go       text eol=lf
+*.ts       text eol=lf
+*.vue      text eol=lf
+*.mts      text eol=lf
+*.css      text eol=lf
+*.json     text eol=lf
+*.yaml     text eol=lf
+*.yml      text eol=lf
+*.md       text eol=lf
+*.sql      text eol=lf
+Makefile   text eol=lf
+Dockerfile text eol=lf
+
+# Windows 脚本保留 CRLF，避免 PowerShell 解析异常
+*.ps1      text eol=crlf
+
+# 二进制资源不做换行符转换
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.webp     binary
+*.ico      binary
+*.db       binary

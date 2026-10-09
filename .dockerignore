@@ -1,0 +1,17 @@
+**/node_modules
+**/dist
+**/.git
+**/.gitignore
+**/*.log
+**/.DS_Store
+**/.vscode
+**/.idea
+data
+*.db
+*.db-wal
+*.db-shm
+# 本地开发/测试产出的临时目录，勿进入构建上下文
+web/shots
+server/cmd/archive/webdist
+.DS_Store
+README.md

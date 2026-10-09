@@ -1,0 +1,177 @@
+# 国际共产主义运动大事年表
+events:
+  - year: 1848
+    date_text: 2月
+    title: 《共产党宣言》发表
+    body: 马克思、恩格斯受共产主义者同盟委托撰写，以"全世界无产者，联合起来！"作结，标志马克思主义诞生。
+    location: 伦敦
+    category: 理论
+    people: [marx, engels]
+  - year: 1864
+    date_text: 9月
+    title: 第一国际成立
+    body: 国际工人协会在伦敦成立，马克思起草成立宣言与章程，推动各国工人运动联合。
+    location: 伦敦
+    category: 组织
+    people: [marx, engels]
+  - year: 1867
+    date_text: 9月
+    title: 《资本论》第一卷出版
+    body: 马克思系统阐述剩余价值理论，揭示资本主义剥削的秘密，政治经济学由此完成革命性变革。
+    location: 汉堡
+    category: 理论
+    people: [marx]
+  - year: 1871
+    date_text: 3月
+    title: 巴黎公社成立
+    body: 世界上第一个无产阶级政权雏形，存续七十二天。马克思以《法兰西内战》总结其经验与教训。
+    location: 巴黎
+    category: 革命
+    people: [marx, engels]
+  - year: 1883
+    date_text: 3月14日
+    title: 马克思逝世
+    body: 马克思在伦敦寓所逝世。恩格斯在墓前演说中称"他的英名和事业将永垂不朽"。
+    location: 伦敦
+    category: 牺牲
+    people: [marx]
+  - year: 1889
+    date_text: 7月
+    title: 第二国际成立
+    body: 在恩格斯指导下成立，推动工人运动国际化，后因对帝国主义战争立场分歧而瓦解。
+    location: 巴黎
+    category: 组织
+    people: [engels]
+  - year: 1895
+    date_text: 8月5日
+    title: 恩格斯逝世
+    body: 恩格斯在伦敦逝世，遗嘱将马克思手稿与文献移交德国社会民主党。
+    location: 伦敦
+    category: 牺牲
+    people: [engels]
+  - year: 1902
+    date_text: 3月
+    title: 《怎么办？》出版
+    body: 列宁提出先锋队理论，主张建立职业革命家组织，批判经济派的自发论。
+    location: 斯图加特
+    category: 理论
+    people: [lenin]
+  - year: 1916
+    date_text: 年中
+    title: 《帝国主义是资本主义的最高阶段》
+    body: 列宁论证帝国主义是资本主义的垄断阶段，提出"帝国主义是无产阶级革命的前夜"。
+    location: 苏黎世
+    category: 理论
+    people: [lenin]
+  - year: 1917
+    date_text: 11月7日
+    title: 十月革命
+    body: 俄国工人阶级在布尔什维克领导下夺取政权，建立世界上第一个社会主义国家。
+    location: 彼得格勒
+    category: 革命
+    people: [lenin]
+  - year: 1919
+    date_text: 3月
+    title: 共产国际成立
+    body: 第三国际在莫斯科成立，推动世界革命，后于1943年解散。
+    location: 莫斯科
+    category: 组织
+    people: [lenin]
+  - year: 1919
+    date_text: 5月4日
+    title: 五四运动
+    body: 反帝反封建的爱国运动，马克思主义在中国广泛传播，为中国共产党的成立准备了条件。
+    location: 北京
+    category: 革命
+    people: [mao]
+  - year: 1921
+    date_text: 7月
+    title: 中国共产党成立
+    body: 中国共产党第一次全国代表大会在上海召开，中国革命从此有了无产阶级政党的领导。
+    location: 上海
+    category: 组织
+    people: [mao]
+  - year: 1924
+    date_text: 1月21日
+    title: 列宁逝世
+    body: 列宁在哥尔克村逝世。全党宣誓继承其遗志。
+    location: 哥尔克
+    category: 牺牲
+    people: [lenin]
+  - year: 1927
+    date_text: 9月
+    title: 秋收起义与井冈山道路
+    body: 毛泽东领导湘赣边界秋收起义，随后转向农村建立革命根据地，开辟农村包围城市的道路。
+    location: 湘赣边界
+    category: 革命
+    people: [mao]
+  - year: 1928
+    date_text: 6月14日
+    title: 切·格瓦拉出生
+    body: 生于阿根廷罗萨里奥一个中产家庭，日后成为古巴革命领袖与国际主义战士。
+    location: 罗萨里奥
+    category: 生平
+    people: [guevara]
+  - year: 1934
+    date_text: 10月
+    title: 长征开始
+    body: 红军被迫战略转移，历时两年行程二万五千里，毛泽东在遵义会议后重新确立领导地位。
+    location: 江西
+    category: 战争
+    people: [mao]
+  - year: 1938
+    date_text: 5月
+    title: 《论持久战》发表
+    body: 毛泽东科学预判抗日战争三个阶段，驳斥"亡国论"与"速胜论"，指明胜利道路。
+    location: 延安
+    category: 理论
+    people: [mao]
+  - year: 1942
+    date_text: 5月
+    title: 延安文艺座谈会
+    body: 毛泽东发表讲话，提出文艺为工农兵服务的方向，确立革命文艺的根本方针。
+    location: 延安
+    category: 文化
+    people: [mao]
+  - year: 1949
+    date_text: 10月1日
+    title: 中华人民共和国成立
+    body: 毛泽东在天安门城楼宣告中华人民共和国中央人民政府成立，中国人民从此站起来了。
+    location: 北京
+    category: 建设
+    people: [mao]
+  - year: 1956
+    date_text: 4月
+    title: 《论十大关系》
+    body: 毛泽东论述重工业与轻工业、农业等十大关系，探索适合中国国情的社会主义建设道路。
+    location: 北京
+    category: 建设
+    people: [mao]
+  - year: 1959
+    date_text: 1月1日
+    title: 古巴革命胜利
+    body: 巴蒂斯塔政权垮台，格瓦拉率部进入哈瓦那，古巴革命取得胜利。
+    location: 哈瓦那
+    category: 革命
+    people: [guevara]
+  - year: 1960
+    date_text: 年中
+    title: 《游击战》出版
+    body: 格瓦拉总结古巴经验，提出游击中心主义，主张以游击战推动拉美革命。
+    location: 哈瓦那
+    category: 理论
+    people: [guevara]
+  - year: 1965
+    date_text: 3月
+    title: 《古巴的人与社会主义》发表
+    body: 格瓦拉批判物质激励与官僚化倾向，提出塑造"社会主义新人"的主张。
+    location: 哈瓦那
+    category: 理论
+    people: [guevara]
+  - year: 1967
+    date_text: 10月9日
+    title: 切·格瓦拉牺牲
+    body: 格瓦拉在玻利维亚游击战中受伤被俘后遭杀害，成为国际主义革命的象征。
+    location: 玻利维亚
+    category: 牺牲
+    people: [guevara]

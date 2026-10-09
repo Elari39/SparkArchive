@@ -1,0 +1,2 @@
+此目录用于内嵌前端构建产物（vite build 的 dist）。
+构建时由 Makefile / Dockerfile 将 web/dist 复制到此处的 webdist/ 下。

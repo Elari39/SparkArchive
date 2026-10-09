@@ -1,0 +1,35 @@
+services:
+  archive:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sparkarchive:latest
+    container_name: sparkarchive
+    restart: unless-stopped
+    ports:
+      # 宿主机 12026 -> 容器 12026（内外一致，便于记忆）。
+      # 刻意避开 1226：该端口常被本机其他软件（如微信输入法 wetype_server）占用，
+      # 一旦宿主机端口被占，Docker 会静默跳过端口绑定：容器照常 healthy 但访问「拒绝连接」。
+      # 显式 host 模式：非 Swarm 环境下必须如此，避免被规范化为 ingress 模式。
+      - target: 12026
+        published: "12026"
+        host_ip: 0.0.0.0
+        protocol: tcp
+        mode: host
+    environment:
+      ADDR: ":12026"
+      DB_PATH: /data/archive.db
+      LOG_LEVEL: info
+      TZ: Asia/Shanghai
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:12026/api/health"]
+      interval: 30s
+      timeout: 3s
+      start_period: 5s
+      retries: 3
+    # 数据库已烘焙进镜像且只读，无需数据卷；如需覆盖文案可挂载 site.yaml
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true

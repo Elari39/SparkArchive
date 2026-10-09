@@ -1,0 +1,235 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   星火档案馆 — 构成主义 × 新粗野主义 设计令牌
+   规则：无渐变、无柔和阴影、圆角≤4px、边框统一 3px
+   ============================================================ */
+@theme {
+  /* 色彩 */
+  --color-ink: #111111;
+  --color-ink-soft: #1f1f1f;
+  --color-paper: #f2ede4;
+  --color-paper-dim: #e3dbcd;
+  --color-red: #d62828;
+  --color-red-deep: #a4161a;
+  --color-steel: #4a4a4a;
+  --color-steel-light: #7a7a7a;
+  --color-brass: #f4b400;
+
+  /* 字体 */
+  --font-display: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-body: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, 'Courier New', monospace;
+
+  /* 新粗野主义硬阴影（无模糊） */
+  --shadow-hard: 6px 6px 0 var(--color-ink);
+  --shadow-hard-sm: 3px 3px 0 var(--color-ink);
+  --shadow-hard-lg: 10px 10px 0 var(--color-ink);
+  --shadow-hard-red: 6px 6px 0 var(--color-red);
+
+  /* 边框 */
+  --border-brutal: 3px solid var(--color-ink);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background-color: var(--color-paper);
+  }
+
+  /* 焦点环：硬描边，键盘可达性 */
+  :focus-visible {
+    outline: 3px solid var(--color-red);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-red);
+    color: var(--color-paper);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* --- 硬边框卡片 --- */
+  .brutal-card {
+    border: var(--border-brutal);
+    background: var(--color-paper);
+    box-shadow: var(--shadow-hard);
+  }
+
+  /* 可交互卡片：hover 位移 + 阴影反向 */
+  .brutal-interactive {
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease;
+  }
+  .brutal-interactive:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-hard-lg);
+  }
+  .brutal-interactive:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-hard-sm);
+  }
+
+  /* --- 印章式标签 --- */
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 2px solid var(--color-ink);
+    background: var(--color-paper);
+    padding: 0.15rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .stamp-red {
+    background: var(--color-red);
+    color: var(--color-paper);
+    border-color: var(--color-ink);
+  }
+  .stamp-ink {
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+
+  /* --- 真实历史照片：单色处理，统一不同年代照片与构成主义色板 --- */
+  .portrait-photo {
+    filter: grayscale(1) contrast(1.06) sepia(0.18);
+    border-radius: 0;
+    background: var(--color-paper-dim);
+  }
+
+  /* --- 超大标题 --- */
+  .display-hero {
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    font-size: clamp(2.75rem, 9vw, 7rem);
+  }
+  .display-xl {
+    font-size: clamp(1.75rem, 4.5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.05;
+  }
+
+  /* --- Markdown 正文排版 --- */
+  .prose-archive {
+    line-height: 1.85;
+    font-size: 1.02rem;
+  }
+  .prose-archive h2 {
+    font-size: 1.6rem;
+    margin: 2.25rem 0 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 3px solid var(--color-ink);
+  }
+  .prose-archive h3 {
+    font-size: 1.2rem;
+    margin: 1.6rem 0 0.6rem;
+  }
+  .prose-archive p {
+    margin: 0.85rem 0;
+  }
+  .prose-archive strong {
+    font-weight: 800;
+    background: linear-gradient(transparent 62%, color-mix(in srgb, var(--color-brass) 70%, transparent) 62%);
+  }
+  .prose-archive ul,
+  .prose-archive ol {
+    margin: 0.85rem 0 0.85rem 1.4rem;
+  }
+  .prose-archive ul {
+    list-style: square;
+  }
+  .prose-archive ol {
+    list-style: decimal;
+  }
+  .prose-archive li {
+    margin: 0.35rem 0;
+  }
+  .prose-archive blockquote {
+    border-left: 6px solid var(--color-red);
+    background: var(--color-paper-dim);
+    padding: 0.75rem 1rem;
+    margin: 1.1rem 0;
+    font-style: normal;
+  }
+  .prose-archive a {
+    color: var(--color-red-deep);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+  }
+  .prose-archive code {
+    font-family: var(--font-mono);
+    background: var(--color-ink);
+    color: var(--color-paper);
+    padding: 0.1rem 0.35rem;
+    font-size: 0.9em;
+  }
+
+  /* --- 检索高亮 --- */
+  .hit {
+    background: var(--color-brass);
+    color: var(--color-ink);
+    font-weight: 800;
+    padding: 0 0.15rem;
+    box-shadow: inset 0 -0.35em 0 color-mix(in srgb, var(--color-brass) 100%, transparent);
+  }
+
+  /* --- 斜纹底（构成主义背景语汇）--- */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-ink) 0,
+      var(--color-ink) 2px,
+      transparent 2px,
+      transparent 9px
+    );
+  }
+  .hatch-red {
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-red) 0,
+      var(--color-red) 3px,
+      transparent 3px,
+      transparent 11px
+    );
+  }
+}
+
+/* 尊重减少动效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .brutal-interactive,
+  .brutal-interactive:hover,
+  .brutal-interactive:active {
+    transition: none;
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

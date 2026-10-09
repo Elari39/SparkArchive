@@ -1,0 +1,42 @@
+# 人物关系图：节点由 people/ 自动生成，此处只定义边
+edges:
+  - from: marx
+    to: engels
+    kind: 合作
+    label: 共著与终身合作
+    note: 1844年巴黎相识，合著《神圣家族》《德意志意识形态》《共产党宣言》，恩格斯整理出版《资本论》第二、三卷。
+  - from: marx
+    to: lenin
+    kind: 传承
+    label: 继承与发展
+    note: 列宁在帝国主义时代发展了马克思主义的无产阶级革命理论。
+  - from: engels
+    to: lenin
+    kind: 传承
+    label: 理论中介
+    note: 恩格斯对《资本论》的整理与普及，是列宁掌握政治经济学的重要途径。
+  - from: lenin
+    to: mao
+    kind: 传承
+    label: 十月革命的道路
+    note: 毛泽东称"十月革命一声炮响，给我们送来了马克思列宁主义"，但主张走农村包围城市的中国道路。
+  - from: marx
+    to: mao
+    kind: 传承
+    label: 唯物史观与阶级斗争
+    note: 毛泽东在《实践论》《矛盾论》中把辩证唯物主义与中国革命经验结合。
+  - from: lenin
+    to: guevara
+    kind: 传承
+    label: 帝国主义论与国际主义
+    note: 格瓦拉把列宁的帝国主义论运用于拉美反帝斗争，主张国际主义的革命义务。
+  - from: mao
+    to: guevara
+    kind: 借鉴
+    label: 游击战与农村根据地
+    note: 格瓦拉研究毛泽东的游击战著作，把"农村包围城市"经验移用于拉美，后在玻利维亚受挫。
+  - from: guevara
+    to: marx
+    kind: 溯源
+    label: 新人理论
+    note: 格瓦拉在《古巴的人与社会主义》中援引马克思的异化理论讨论社会主义新人的塑造。

@@ -1,0 +1,44 @@
+# ---------- 依赖 ----------
+node_modules/
+.pnpm-store/
+
+# ---------- 构建产物 ----------
+# 前端构建输出（会由 make build 内嵌进后端）
+web/dist/
+# 后端二进制
+server/archive
+server/archive.exe
+# 内嵌静态资源：整体忽略，仅保留 .gitkeep 占位（避免 go:embed 空目录报错）
+server/cmd/archive/webdist/*
+!server/cmd/archive/webdist/.gitkeep
+
+# ---------- 本地数据 / 数据库 ----------
+server/data/
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# ---------- 脚本 / 测试产出 ----------
+# 无头 Chrome 截图与临时 HTML（make smoke / pnpm render-check 等生成）
+web/shots/
+
+# ---------- 日志与临时文件 ----------
+*.log
+npm-debug.log*
+pnpm-debug.log*
+*.tmp
+*.temp
+
+# ---------- 编辑器 / 操作系统 ----------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+
+# ---------- 环境变量 ----------
+.env
+.env.local
+.env.*.local

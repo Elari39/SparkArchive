@@ -1,0 +1,196 @@
+# 术语表 / 概念卡
+terms:
+  - slug: proletariat
+    term: 无产阶级
+    aliases: [工人阶级]
+    definition: 在资本主义社会中不占有生产资料、依靠出卖劳动力获取生活资料的雇佣劳动者阶级。
+    body: >-
+      无产阶级是现代资本主义社会的两大基本阶级之一。马克思、恩格斯在《共产党宣言》中指出，无产阶级是
+      大工业本身的产物，是真正革命的阶级。由于不占有任何生产资料，无产阶级只有消灭全部私有制才能
+      获得自身的解放。"无产者在这个革命中失去的只是锁链。他们获得的将是整个世界。"
+    people: [marx, engels]
+    related: [bourgeoisie, surplus-value, class-struggle]
+    sources: [communist-manifesto]
+  - slug: bourgeoisie
+    term: 资产阶级
+    aliases: [资本家阶级]
+    definition: 占有生产资料、依靠剥削雇佣劳动获取剩余价值的阶级。
+    body: >-
+      资产阶级是随着资本主义生产方式的产生和发展而形成和壮大的。马克思、恩格斯肯定了资产阶级在历史上
+      曾经起过的非常革命的作用——它摧毁封建制度、开拓世界市场、极大地发展了生产力；但同时也指出，随着
+      生产社会化与生产资料私人占有之间矛盾的激化，资本主义生产关系已成为生产力发展的桎梏。
+    people: [marx, engels]
+    related: [proletariat, surplus-value]
+    sources: [communist-manifesto, capital-vol1]
+  - slug: surplus-value
+    term: 剩余价值
+    aliases: []
+    definition: 雇佣工人所创造的、被资本家无偿占有的超过劳动力价值的价值。
+    body: >-
+      剩余价值学说是马克思一生中两大发现之一，是《资本论》的核心。劳动力成为商品是剩余价值生产的
+      前提：资本家按劳动力价值支付工资，而工人在劳动中创造的价值大于劳动力本身的价值，其差额即被
+      资本家无偿占有。剩余价值的生产是资本主义生产的直接目的和决定性动机，揭示这一点也就揭示了
+      资本主义剥削的秘密。
+    people: [marx]
+    related: [proletariat, bourgeoisie, capital-accumulation]
+    sources: [capital-vol1]
+  - slug: historical-materialism
+    term: 唯物史观
+    aliases: [历史唯物主义]
+    definition: 关于人类社会发展一般规律的科学，认为社会存在决定社会意识，生产力与生产关系的矛盾运动是社会发展的根本动力。
+    body: >-
+      唯物史观是马克思的伟大发现之一。其基本观点是：不是人们的意识决定人们的存在，相反，是人们的社会
+      存在决定人们的意识。生产力与生产关系、经济基础与上层建筑的矛盾运动推动社会形态由低级向高级
+      更替。列宁称唯物史观是"科学思想中的最大成果"。
+    people: [marx, engels, lenin]
+    related: [class-struggle, dialectics]
+    sources: [communist-manifesto]
+  - slug: class-struggle
+    term: 阶级斗争
+    aliases: []
+    definition: 阶级社会中被剥削阶级与剥削阶级之间基于根本利益对立而进行的斗争，是阶级社会发展的直接动力。
+    body: >-
+      "至今一切社会的历史都是阶级斗争的历史。"马克思、恩格斯论证，阶级斗争贯穿于阶级社会的全部历史，
+      表现为经济斗争、政治斗争和思想斗争三种基本形式，其中政治斗争是最高形式。无产阶级反对资产阶级的
+      阶级斗争必然导致无产阶级专政，最终消灭一切阶级、进入无阶级的共产主义社会。
+    people: [marx, engels, lenin, mao]
+    related: [proletariat, dictatorship-of-proletariat, historical-materialism]
+    sources: [communist-manifesto]
+  - slug: dictatorship-of-proletariat
+    term: 无产阶级专政
+    aliases: []
+    definition: 工人阶级通过其先锋队政党领导的、对资产阶级实行统治的国家形式，是向无阶级社会过渡的政治时期。
+    body: >-
+      马克思在《哥达纲领批判》中明确提出："在资本主义社会和共产主义社会之间，有一个从前者变为后者的
+      革命转变时期。同这个时期相适应的也有一个政治上的过渡时期，这个时期的国家只能是无产阶级的革命
+      专政。"无产阶级专政的实质是无产阶级的政治统治，其历史使命是消灭一切阶级和阶级差别，最终使
+      国家自行消亡。
+    people: [marx, lenin, mao]
+    related: [class-struggle, vanguard-party, theory-of-the-state]
+    sources: [critique-gotha, state-and-revolution]
+  - slug: imperialism
+    term: 帝国主义
+    aliases: [垄断资本主义]
+    definition: 资本主义发展的最高阶段，其基本特征是垄断代替自由竞争、金融资本统治、资本输出、国际垄断同盟瓜分世界。
+    body: >-
+      列宁在《帝国主义是资本主义的最高阶段》中论证，帝国主义具有五个基本特征：生产和资本的集中发展到
+      形成垄断组织；银行资本与工业资本融合为金融资本并形成金融寡头；资本输出具有特别重要的意义；
+      国际垄断同盟形成并瓜分世界；最大资本主义列强已把世界领土分割完毕。帝国主义是寄生的、腐朽的、
+      垂死的资本主义，是无产阶级社会革命的前夜。
+    people: [lenin, guevara]
+    related: [proletariat, national-liberation]
+    sources: [imperialism]
+  - slug: vanguard-party
+    term: 先锋队
+    aliases: [先锋队理论]
+    definition: 由工人阶级中最有觉悟、最先进的分子组成的革命政党，负责向工人阶级灌输社会主义意识并领导其斗争。
+    body: >-
+      列宁在《怎么办？》中提出，工人阶级单靠自身力量只能产生工联主义意识，社会主义意识必须由先锋队政党
+      从外部灌输。党是工人阶级的先进部队，以民主集中制为组织原则，由职业革命家组成，是革命的领导核心。
+      "给我们一个革命家组织，我们就能把俄国翻转过来！"
+    people: [lenin, mao]
+    related: [dictatorship-of-proletariat, mass-line]
+    sources: [what-is-to-be-done]
+  - slug: mass-line
+    term: 群众路线
+    aliases: []
+    definition: 一切为了群众，一切依靠群众，从群众中来，到群众中去，是党的根本工作路线。
+    body: >-
+      群众路线是毛泽东思想活的灵魂之一。毛泽东指出，党必须密切联系群众，把群众的意见集中起来，化为
+      系统的领导意见，再回到群众中去指导实践，并在群众实践中检验和发展这些意见。如此循环往复，使
+      领导的认识更正确、更生动、更丰富。
+    people: [mao]
+    related: [vanguard-party, new-democracy]
+    sources: [on-practice]
+  - slug: new-democracy
+    term: 新民主主义
+    aliases: [新民主主义革命]
+    definition: 殖民地半殖民地国家中无产阶级领导的、人民大众的、反对帝国主义、封建主义和官僚资本主义的革命。
+    body: >-
+      毛泽东在《新民主主义论》中系统论证，中国革命必须分两步走：第一步是新民主主义革命，改变半殖民地
+      半封建的社会形态，建立新民主主义社会；第二步是社会主义革命。新民主主义革命由无产阶级领导，
+      以工农联盟为基础，其前途是社会主义而非资本主义。这是马克思列宁主义中国化的重大理论成果。
+    people: [mao]
+    related: [mass-line, national-liberation]
+    sources: [on-new-democracy]
+  - slug: foquismo
+    term: 游击中心主义
+    aliases: [foquismo, 焦点论]
+    definition: 格瓦拉提出的游击战理论，主张以一支小规模游击中心在农村建立根据地，通过武装斗争唤起民众、最终夺取政权。
+    body: >-
+      格瓦拉在《游击战》中总结古巴革命经验，提出游击中心主义。该理论认为，革命的客观条件并不总是现成的，
+      一支小规模的游击中心（foco）可以成为革命的催化剂：在农村建立根据地，通过游击战削弱敌人、唤起
+      民众，最终夺取全国政权。这一理论在拉美广泛传播，但在玻利维亚等国的实践中遭遇挫折，其唯意志论
+      倾向也受到批评。
+    people: [guevara]
+    related: [national-liberation, imperialism]
+    sources: [guerrilla-warfare]
+  - slug: socialist-new-man
+    term: 社会主义新人
+    aliases: [新人理论]
+    definition: 格瓦拉提出的关于社会主义社会人的全面发展的理论，主张通过教育与道德激励塑造集体主义觉悟的新人。
+    body: >-
+      格瓦拉在《古巴的人与社会主义》中提出，社会主义的最终目标不是物质富足，而是人的全面发展。他反对
+      单纯依靠物质刺激，认为那会助长个人主义、复辟资本主义价值观。必须通过义务劳动、教育与道德激励，
+      克服异化，塑造以集体利益为重、富有牺牲精神的"社会主义新人"。格瓦拉本人长期坚持参加义务劳动，
+      是这一理念的身体力行者。
+    people: [guevara, marx]
+    related: [alienated-labor]
+    sources: [man-and-socialism]
+  - slug: alienated-labor
+    term: 异化劳动
+    aliases: [劳动异化]
+    definition: 马克思在《1844年经济学哲学手稿》中提出的概念，指在私有制条件下劳动与其本质相背离、成为压迫劳动者的异己力量。
+    body: >-
+      马克思提出劳动异化的四重规定：劳动者与劳动产品相异化（产品越丰富，劳动者越贫困）；与劳动活动
+      本身相异化（劳动不是自由自觉的创造，而是被迫的苦役）；与人的类本质相异化（人丧失了自由自觉的
+      创造性这一本质特征）；人与人相异化。异化劳动的根源在于私有制，其克服有待于共产主义的实现。
+    people: [marx, guevara]
+    related: [socialist-new-man, historical-materialism]
+    sources: [capital-vol1, man-and-socialism]
+  - slug: national-liberation
+    term: 民族解放运动
+    aliases: [民族自决]
+    definition: 殖民地半殖民地被压迫民族争取民族独立与解放的斗争，是无产阶级世界革命的一部分。
+    body: >-
+      列宁提出民族自决权理论，主张被压迫民族享有自由分离和建立独立民族国家的权利，把民族解放运动看作
+      无产阶级世界革命的一部分。这一理论对20世纪亚非拉民族解放运动产生了深远影响。格瓦拉进一步主张
+      亚非拉被压迫民族应团结起来，共同反抗帝国主义与新殖民主义的剥削。
+    people: [lenin, mao, guevara]
+    related: [imperialism, new-democracy, foquismo]
+    sources: [imperialism, on-new-democracy]
+  - slug: dialectics
+    term: 唯物辩证法
+    aliases: [辩证法]
+    definition: 关于自然、人类社会和思维的运动和发展的普遍规律的科学，其根本规律是对立统一规律。
+    body: >-
+      恩格斯在《反杜林论》《自然辩证法》中系统阐述唯物辩证法，提出辩证法的三大规律：对立统一规律、
+      质量互变规律、否定之否定规律。毛泽东在《矛盾论》中进一步论证对立统一规律是唯物辩证法的最根本
+      的法则，并系统论述了矛盾的普遍性与特殊性、主要矛盾与次要矛盾等原理，提出"具体问题具体分析是
+      马克思主义活的灵魂"。
+    people: [engels, marx, mao]
+    related: [historical-materialism]
+    sources: [anti-duhring, on-contradiction]
+  - slug: capital-accumulation
+    term: 资本积累
+    aliases: []
+    definition: 剩余价值转化为资本的过程，其一般规律是财富在资产阶级一极积累、贫困在无产阶级一极积累。
+    body: >-
+      马克思在《资本论》第一卷中论证，资本家把榨取来的剩余价值的一部分重新转化为资本，扩大生产规模，
+      这就是资本积累。资本积累必然造成资本有机构成的提高和相对过剩人口的产生，导致财富在资产阶级
+      一极积累、贫困在无产阶级一极积累。生产社会化与生产资料私人占有之间的矛盾日益尖锐，最终
+      "剥夺者就要被剥夺"。
+    people: [marx]
+    related: [surplus-value, bourgeoisie]
+    sources: [capital-vol1]
+  - slug: theory-of-the-state
+    term: 国家学说
+    aliases: []
+    definition: 马克思主义关于国家起源、本质、职能与消亡的理论。
+    body: >-
+      恩格斯在《家庭、私有制和国家的起源》中论证，国家是阶级矛盾不可调和的产物，是阶级统治的工具，
+      并不是从来就有的，也将随着阶级的消失而消亡。列宁在《国家与革命》中进一步论证，工人阶级不能
+      简单地掌握现成的国家机器，必须打碎资产阶级国家机器，建立无产阶级专政，并最终使国家自行消亡。
+    people: [engels, lenin]
+    related: [dictatorship-of-proletariat, class-struggle]
+    sources: [origin-family, state-and-revolution]
