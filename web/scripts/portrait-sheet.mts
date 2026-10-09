@@ -1,15 +1,19 @@
-// 把五个人物肖像（真实照片）拼成对比图，核对裁切与单色处理是否统一。
+// 把全部人物肖像（真实照片）拼成对比图，核对裁切与单色处理是否统一。
 // 直接读取 public 下的资产（无需站点运行），用无头 Chrome 截图输出 shots/portraits.png。
+// 注意：只列出**已有照片**的人物；缺图者（目前为 zetkin）走前端矢量插画降级，不在此图内。
 import { launchCdp, savePng, sleep, writeTempHtml } from "./lib/cdp.mts"
 
 const PORT = 9335
-const W = 1120
+const W = 1420
 const H = 320
 
 const people: [string, string][] = [
   ["marx", "马克思"],
   ["engels", "恩格斯"],
   ["lenin", "列宁"],
+  ["luxemburg", "卢森堡"],
+  ["dimitrov", "季米特洛夫"],
+  ["ho-chi-minh", "胡志明"],
   ["mao", "毛泽东"],
   ["guevara", "切·格瓦拉"],
 ]

@@ -47,7 +47,7 @@ await check('GET /terms', '/terms', TermSummary.array())
 await check('GET /relations', '/relations', GraphData)
 await check('GET /search?q=无产阶级', '/search?q=' + encodeURIComponent('无产阶级'), SearchResult)
 
-for (const slug of ['marx', 'engels', 'lenin', 'mao', 'guevara']) {
+for (const slug of ['marx', 'engels', 'zetkin', 'lenin', 'luxemburg', 'dimitrov', 'ho-chi-minh', 'mao', 'guevara']) {
   await check('GET /people/' + slug, '/people/' + slug, PersonDetail)
 }
 for (const slug of ['imperialism', 'on-practice', 'guerrilla-warfare']) {

@@ -64,9 +64,9 @@ const portraitList = Object.entries(PORTRAITS).map(([key, meta]) => ({ key, meta
       <div class="mt-10 border-t-3 border-ink pt-6">
         <h2 class="mb-3 font-display text-xl font-black">收录范围</h2>
         <ul class="grid gap-2 text-sm sm:grid-cols-2">
-          <li><RouterLink to="/people" class="font-bold text-red-deep hover:underline">人物</RouterLink> — 马克思、恩格斯、列宁、毛泽东、切·格瓦拉</li>
+          <li><RouterLink to="/people" class="font-bold text-red-deep hover:underline">人物</RouterLink> — 马克思、恩格斯、蔡特金、列宁、卢森堡、季米特洛夫、胡志明、毛泽东、切·格瓦拉</li>
           <li><RouterLink to="/works" class="font-bold text-red-deep hover:underline">著作</RouterLink> — 经典文献摘录与书目索引</li>
-          <li><RouterLink to="/timeline" class="font-bold text-red-deep hover:underline">年表</RouterLink> — 1848—1967 国际共运大事</li>
+          <li><RouterLink to="/timeline" class="font-bold text-red-deep hover:underline">年表</RouterLink> — 1848—1969 国际共运大事</li>
           <li><RouterLink to="/glossary" class="font-bold text-red-deep hover:underline">术语</RouterLink> — 核心概念卡与互链</li>
           <li><RouterLink to="/graph" class="font-bold text-red-deep hover:underline">关系</RouterLink> — 思想传承与国际联系</li>
           <li><RouterLink to="/search" class="font-bold text-red-deep hover:underline">检索</RouterLink> — 全文跨类检索</li>

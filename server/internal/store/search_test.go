@@ -33,6 +33,18 @@ func newTestStore(t *testing.T) *Store {
 	return st
 }
 
+// realPeopleCount 返回 content/ 下实际收录的人物数。
+// 用于替代写死的数字：本包关心的是「入库后数量与内容源一致」这一不变量，
+// 而不是某个特定数字，故新增人物时这里无需改动。
+func realPeopleCount(t *testing.T) int {
+	t.Helper()
+	a, err := content.Load(filepath.Join("..", "..", "..", "content"))
+	if err != nil {
+		t.Fatalf("加载内容: %v", err)
+	}
+	return len(a.People)
+}
+
 // TestSearchChinese 是本项目最关键的一组测试：
 // SQLite FTS5 默认的 unicode61 分词器不切分中文，若配置不当中文检索会完全失效。
 func TestSearchChinese(t *testing.T) {
@@ -134,12 +146,13 @@ func TestSearchInjection(t *testing.T) {
 		}
 	}
 	// 表必须仍然存在且内容完好
+	want := realPeopleCount(t)
 	var n int
 	if err := st.DB().QueryRowContext(ctx, "SELECT COUNT(*) FROM person").Scan(&n); err != nil {
 		t.Fatalf("person 表已损坏: %v", err)
 	}
-	if n != 5 {
-		t.Errorf("person 表行数 = %d, 期望 5", n)
+	if n != want {
+		t.Errorf("person 表行数 = %d, 期望 %d", n, want)
 	}
 }
 
@@ -199,8 +212,8 @@ func TestIngestCounts(t *testing.T) {
 	if err != nil {
 		t.Fatalf("统计: %v", err)
 	}
-	if counts.People != 5 {
-		t.Errorf("人物数 = %d, 期望 5", counts.People)
+	if want := realPeopleCount(t); counts.People != want {
+		t.Errorf("人物数 = %d, 期望 %d", counts.People, want)
 	}
 	if counts.Works < 10 {
 		t.Errorf("著作数 = %d, 期望 >= 10", counts.Works)
@@ -219,7 +232,7 @@ func TestPersonDetail(t *testing.T) {
 	st := newTestStore(t)
 	ctx := t.Context()
 
-	for _, slug := range []string{"marx", "engels", "lenin", "mao", "guevara"} {
+	for _, slug := range []string{"marx", "engels", "zetkin", "lenin", "luxemburg", "dimitrov", "ho-chi-minh", "mao", "guevara"} {
 		p, err := st.Person(ctx, slug)
 		if err != nil {
 			t.Fatalf("查询人物 %s: %v", slug, err)
@@ -297,8 +310,8 @@ func TestGraph(t *testing.T) {
 	if err != nil {
 		t.Fatalf("查询关系图: %v", err)
 	}
-	if len(nodes) != 5 {
-		t.Errorf("节点数 = %d, 期望 5", len(nodes))
+	if want := realPeopleCount(t); len(nodes) != want {
+		t.Errorf("节点数 = %d, 期望 %d", len(nodes), want)
 	}
 	if len(edges) == 0 {
 		t.Error("关系边不应为空")

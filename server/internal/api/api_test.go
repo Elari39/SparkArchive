@@ -226,8 +226,8 @@ func TestRelationsContract(t *testing.T) {
 
 	m := decodeMap(t, get(t, h, "/api/relations"))
 	nodes, ok := m["nodes"].([]any)
-	if !ok || len(nodes) != 5 {
-		t.Fatalf("nodes 应为 5 个，实际 %v", m["nodes"])
+	if !ok || len(nodes) != 9 {
+		t.Fatalf("nodes 应为 9 个，实际 %v", m["nodes"])
 	}
 	n0 := nodes[0].(map[string]any)
 	for _, key := range []string{"slug", "name", "epithet"} {

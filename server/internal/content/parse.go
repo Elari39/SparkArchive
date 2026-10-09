@@ -169,7 +169,10 @@ func Load(contentDir string) (*Archive, error) {
 	}
 	a.Site = site
 
-	// 人物：按文件名排序保证顺序稳定
+	// 人物：先按文件名排序保证加载稳定，再按出生日期升序重排。
+	// 收录人物的展示顺序（列表、关系图环形布局、事件与术语中的人物引用）都取自该顺序，
+	// 按出生日期排列符合档案馆的历史直觉，也避免新增人物时顺序变得随意。
+	// birth 为 ISO 8601（YYYY-MM-DD），字符串比较即时间先后；出生日期相同时保持文件名序稳定。
 	personPaths, err := filepath.Glob(filepath.Join(contentDir, "people", "*.md"))
 	if err != nil {
 		return nil, fmt.Errorf("查找人物档案: %w", err)
@@ -185,6 +188,9 @@ func Load(contentDir string) (*Archive, error) {
 	if len(a.People) == 0 {
 		return nil, fmt.Errorf("在 %s 下未找到任何人物档案", contentDir)
 	}
+	slices.SortStableFunc(a.People, func(x, y Person) int {
+		return strings.Compare(x.Birth, y.Birth)
+	})
 
 	works, err := readYAML[WorksFile](filepath.Join(contentDir, "works.yaml"))
 	if err != nil {

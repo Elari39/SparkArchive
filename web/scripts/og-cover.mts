@@ -10,6 +10,7 @@ const people: [string, string][] = [
   ["marx", "卡尔·马克思"],
   ["engels", "弗里德里希·恩格斯"],
   ["lenin", "列宁"],
+  ["luxemburg", "罗莎·卢森堡"],
   ["mao", "毛泽东"],
   ["guevara", "切·格瓦拉"],
 ]
@@ -34,7 +35,7 @@ const html = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><sty
   .en{margin-top:10px;font-family:Consolas,monospace;font-size:15px;letter-spacing:.34em;color:#4a4a4a}
   .sub{margin-top:20px;border-left:8px solid #d62828;padding-left:16px;font-size:20px;font-weight:700}
   .desc{margin-top:10px;font-size:15px;color:#1f1f1f;line-height:1.7;max-width:640px}
-  .strip{margin-top:auto;padding:26px 48px 38px;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .strip{margin-top:auto;padding:26px 48px 38px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
   figure{border:3px solid #111;background:#e3dbcd;box-shadow:6px 6px 0 #111;overflow:hidden;aspect-ratio:1}
   figure img{width:100%;height:100%;object-fit:cover;display:block;
     filter:grayscale(1) contrast(1.06) sepia(.18)}
@@ -44,7 +45,7 @@ const html = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><sty
     <h1>星火<span class="r">档案</span>馆</h1>
     <div class="en">SPARK ARCHIVE</div>
     <div class="sub">全世界无产者，联合起来！</div>
-    <div class="desc">无产阶级革命理论与实践的文献档案 —— 收录马克思、恩格斯、列宁、毛泽东、切·格瓦拉五个人的生平、著作与思想。</div>
+    <div class="desc">无产阶级革命理论与实践的文献档案 —— 收录马克思、恩格斯、列宁、毛泽东、切·格瓦拉等九位革命者的生平、著作与思想。</div>
   </header>
   <div class="strip">${figs}</div>
 </body></html>`

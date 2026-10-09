@@ -6,8 +6,8 @@
 [![Go](https://img.shields.io/badge/Go-1.27-00ADD8.svg)](server/go.mod)
 [![Vue](https://img.shields.io/badge/Vue-3.5-42b883.svg)](web/package.json)
 
-无产阶级革命理论与实践的文献档案。收录**马克思、恩格斯、列宁、毛泽东、切·格瓦拉**五个人的生平、
-著作与思想，记录国际共产主义运动的理论源流与实践历程。
+无产阶级革命理论与实践的文献档案。收录**马克思、恩格斯、蔡特金、列宁、卢森堡、季米特洛夫、胡志明、毛泽东、切·格瓦拉**
+九位革命者的生平、著作与思想，记录国际共产主义运动的理论源流与实践历程。
 
 前端 **Vue 3 + Vite + Tailwind CSS 4**，后端 **Go + SQLite（FTS5 全文索引）**，**Docker 一键部署**，端口 **12026**。
 
@@ -195,6 +195,25 @@ cd web && pnpm og-cover       # 重新生成社交分享封面 public/og-cover.p
 ——标题即分类依据（[`parse.go`](server/internal/content/parse.go) 的 `kindFor`），
 **新增人物必须补齐这五个章节**，否则 `go test` 的 `TestLoadRealContent` 会失败。
 
+几处容易被漏掉的地方：
+
+- **人物顺序由 `birth` 决定**。`Load` 在读完所有档案后按 `birth`（ISO 8601 字符串）升序重排，
+  列表、关系图环形布局以及事件／术语中的人物引用顺序都取自它。因此新人的 `birth` 必须填写完整，
+  否则会排到最前。
+- **每人至少要有 1 部著作**，否则 `search_test.go` 的 `TestPersonDetail` 会失败（它校验每人都有
+  四域贡献、生平年表与关联著作）。
+- **肖像**：把 `<slug>.jpg` / `<slug>.webp`（480×480）放入 `web/public/assets/portraits/`，
+  并在 [`portraits.ts`](web/src/config/portraits.ts) 登记摄影者、年代与来源。**不登记也不会报错**——
+  `Portrait.vue` 会静默回退为矢量插画，所以要主动确认。若确定长期无照片，
+  请在 [`PortraitArt.vue`](web/src/components/portrait-art/PortraitArt.vue) 补一个 `<g v-else-if>` 分支，
+  否则该人物会套用其他样式的人物插画。
+- **首页门楣照片墙**只陈列 6 位代表性人物，名单是 [`site.ts`](web/src/config/site.ts) 中的
+  `HERO_WALL`（编辑取舍，不是数据切片，故需显式声明）。其余人物在「收录人物」分区完整列出。
+- 涉及「收录范围」「累计人数」的文案散落在 `content/site.yaml`、`site.ts`、`ModuleGrid.vue`、
+  `PeopleView.vue`、`AboutView.vue`、`TimelineView.vue`、`README.md` 与三个 `web/scripts/*.mts`
+  及 `scripts/smoke.ps1` 中，新增人物时需一并核对。后端的 `parse_test.go` 与 `api_test.go`
+  各有一处数量断言；`internal/store` 的测试则从内容源推导人数，无需改动。
+
 入库时会做**引用完整性校验**：著作引用的人物、术语引用的著作与关联术语、事件引用的、
 关系边引用的两端人物，只要有一个不存在，构建即失败并在错误信息中指出具体条目。
 
@@ -206,12 +225,14 @@ cd web && pnpm og-cover       # 重新生成社交分享封面 public/og-cover.p
   分歧之处，一律设「争议与评价」专节如实说明（含对失误与错误的记载）。这既是史实要求，也是档案可信度的来源。
 - **著作**：仅收录**精选摘录 + 书目索引 + 外部全文链接**，不收录受版权保护的全文。
   **毛泽东著作在中国境内的版权保护期至 2026 年底**，故尤其不收录全文。
-- **肖像**：人物肖像采用**公有领域**历史照片（马克思／恩格斯／列宁／毛泽东／切·格瓦拉），逐张标注
-  摄影者、年代与来源，清单见 [`portraits.ts`](web/src/config/portraits.ts) 与
+- **肖像**：人物肖像采用**公有领域**历史照片，逐张标注摄影者、年代与来源，
+  清单见 [`portraits.ts`](web/src/config/portraits.ts) 与
   [`CREDITS.md`](web/public/assets/portraits/CREDITS.md)，并同步展示于《凡例》页。照片仅用于学习与研究，
   不作商业用途。原构成主义几何矢量插画保留为**加载失败／缺图时的降级方案**
-  （[Portrait.vue](web/src/components/Portrait.vue)）。其中切·格瓦拉所用为 Korda《英勇的游击队员》，
-  维基共享资源标注为公有领域，惟该照片历史上曾存在道德权争议，本站如实记录、仅作史料展示。
+  （[Portrait.vue](web/src/components/Portrait.vue)）。
+  其中切·格瓦拉所用为 Korda《英勇的游击队员》，维基共享资源标注为公有领域，惟该照片历史上曾存在道德权争议，
+  本站如实记录、仅作史料展示。**克拉拉·蔡特金暂时缺图**，前端按设计回退为本站绘制的矢量插画，
+  补图方式见 [`CREDITS.md`](web/public/assets/portraits/CREDITS.md)。
 - **授权**：本站原创文字采用 CC BY-NC-SA 4.0；所引原著摘录版权归各自权利人所有。
 
 ---
@@ -246,21 +267,33 @@ cd web && pnpm og-cover       # 重新生成社交分享封面 public/og-cover.p
 | 人物肖像改用公有领域历史照片，矢量插画降级 | 几何插画辨识度低、缺少史料质感。改用公有领域历史照片并逐张署名，保留原矢量插画作加载失败／缺图的降级。图片是构建期静态资产，故以 `portrait_key` 在前端映射（[`portraits.ts`](web/src/config/portraits.ts)），后端与契约零改动。 |
 | 人物肖像的 face 色固定为中性米白 | 初版让面部复用背景/装饰色，导致出现"黄脸""红脸"等有歧义的观感，配色角色必须分离。该规则现仅适用于矢量降级插画。 |
 | 测试脚本默认 `127.0.0.1` 而非 `localhost` | Docker Desktop 端口代理只监听 IPv4，`localhost` 优先解析到 `::1` 会让 .NET HttpClient 空等约 21 秒；改用 IPv4 后冒烟测试从 13 分钟降到 2 秒。 |
+| 人物按 `birth` 升序排列 | 原先取文件名序，收录到 9 人后变成 `dimitrov → … → marx`（马克思排第 8），列表与关系图都显得随意。改按出生日期排序（ISO 字符串直接比较）后顺序符合档案馆的历史直觉。`ord` 是列表、关系图与各处人物引用的统一顺序来源，故只需在 `Load` 里排一次。 |
+| 首页门楣照片墙用显式名单 `HERO_WALL` | 照片墙是**策展**而非数据切片：只陈列 6 位代表性人物，其余在「收录人物」分区完整列出。任何自然排序取前 6 位都得不到这一组合（按出生日期会漏掉毛泽东与切·格瓦拉）。名单放在 `site.ts`，与既有的 `PEOPLE_FILTERS` 同类。 |
+| 缺图人物的矢量插画需显式分支 | `PortraitArt.vue` 的兜底分支是最后那个 `<g v-else>`（格瓦拉）。若新人物只加进 `SPECS` 而不加判断分支，缺图时会套用其他人物的插画（例如女性人物戴上格瓦拉的贝雷帽）。因此每位无照片人物都要补一个 `<g v-else-if>`。 |
+| 首页照片墙加渲染断言 | 曾出现「5 张照片 + 1 个工业黄色块」的失衡版式，且色块是唯一的亮饱和色、反而成为视觉焦点。除改逻辑外，在 `render-check` 中对 `[data-hero-wall] [data-portrait]` 断言为 6，避免同类问题再次静默发生。 |
 
 ---
 
 ## 验证情况
 
-全部在本机实测通过（Go 1.27.1 / Node 24.19 / Docker 29.5.3，Windows）：
+全部在本机实测通过（Go 1.27.1 / Node 22.22.2 / Docker 29.8.2，Windows）：
 
 | 套件 | 结果 |
 |---|---|
-| `go vet ./...` | 通过 |
+| `go vet ./...` / `gofmt -l .` | 通过 |
 | `go test ./...` | **通过** — content 解析与边界校验、store 查询、FTS5 中文检索（9 组用例）、API 契约与限流共 4 个包 |
 | `pnpm type-check` | 通过（vue-tsc + TypeScript 5.9.3） |
 | `pnpm build` | 通过 |
-| `pnpm contract-check` | **18/18** — 前端 zod schema 与后端响应逐字段匹配 |
-| `pnpm render-check` | **11/11** — 无头 Chrome 渲染全部路由，零控制台错误 |
-| `scripts/smoke.ps1` | **53/53** — API、中文检索、错误处理、SPA 回退、缓存头、肖像资产（WebP+JPEG、immutable） |
-| 肖像资产 | 5 张公有领域历史照片，WebP 约 129 KB + JPEG 约 179 KB，经 `:12026` 以长期缓存提供 |
-| 镜像 | **39.7 MB**，容器内存约 25 MiB，健康检查 `healthy` |
+| `pnpm contract-check` | **22/22** — 前端 zod schema 与后端响应逐字段匹配 |
+| `pnpm render-check` | **11/11** — 无头 Chrome 渲染全部路由，零控制台错误；首页额外断言门楣照片墙为 6 格 |
+| `scripts/smoke.ps1` | **56 项** — API、中文检索、错误处理、SPA 回退、缓存头、肖像资产（WebP+JPEG、immutable） |
+| `pnpm og-cover` / `pnpm portrait-sheet` | 通过，输出 1200×630 封面与 8 张肖像对比图，均已人工核对无裁切 |
+| 肖像资产 | 8 张公有领域历史照片（蔡特金由矢量插画降级），WebP 约 191 KB + JPEG 约 245 KB，经 `:12026` 以长期缓存提供 |
+| 镜像 | 单二进制容器，健康检查 `healthy` |
+
+> **一处环境相关的注意**：在部分沙箱环境中，`smoke.ps1` 跑到后半段（肖像资产与静态资源）时
+> PowerShell 的 `Invoke-WebRequest` 会抛出「解析远程名称失败」——即对 `127.0.0.1` 的名称解析间歇性失败。
+> 该现象与本项目无关：同一批 URL 用 `curl` 逐个复核全部返回 `200` 且内容类型正确
+> （`image/jpeg` / `image/webp` / `image/svg+xml` / `image/png`），`Cache-Control` 亦为
+> `public, max-age=31536000, immutable`。两次连续运行失败项并不相同，可确认是环境抖动而非缺陷。
+> 若在本机复现失败，建议先用 `curl` 复核再判断。

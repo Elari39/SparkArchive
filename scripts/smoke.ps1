@@ -52,13 +52,13 @@ Write-Host "API 端点" -ForegroundColor Yellow
 Check "GET /api/health 返回 200" {
     (Invoke-WebRequest "$BaseUrl/api/health" -UseBasicParsing).StatusCode -eq 200
 }
-Check "GET /api/meta 人物数为 5" {
+Check "GET /api/meta 人物数为 9" {
     $m = Api "/api/meta"
-    $m.counts.people -eq 5 -and $m.counts.works -gt 0 -and $m.counts.events -gt 0 -and $m.counts.terms -gt 0
+    $m.counts.people -eq 9 -and $m.counts.works -gt 0 -and $m.counts.events -gt 0 -and $m.counts.terms -gt 0
 }
-Check "GET /api/people 返回 5 人" {
+Check "GET /api/people 返回 9 人" {
     $p = Api "/api/people"
-    $p.Count -eq 5
+    $p.Count -eq 9
 }
 Check "GET /api/people/mao 含四域贡献与争议章节" {
     $p = Api "/api/people/mao"
@@ -71,9 +71,9 @@ Check "GET /api/people/marx 含生平年表" {
     $p = Api "/api/people/marx"
     $p.timeline.Count -gt 5
 }
-Check "五个人物都含全部四域贡献" {
+Check "九个人物都含全部四域贡献" {
     $ok = $true
-    foreach ($slug in @("marx", "engels", "lenin", "mao", "guevara")) {
+    foreach ($slug in @("marx", "engels", "zetkin", "lenin", "luxemburg", "dimitrov", "ho-chi-minh", "mao", "guevara")) {
         $k = (Api "/api/people/$slug").sections.kind
         foreach ($need in @("politics", "economy", "culture", "thought")) {
             if ($k -notcontains $need) { $ok = $false; Write-Host "      $slug 缺少 $need" -ForegroundColor DarkYellow }
@@ -107,9 +107,9 @@ Check "GET /api/terms/proletariat 含关联与出处" {
     $t = Api "/api/terms/proletariat"
     $t.related.Count -gt 0 -and $t.sources.Count -gt 0 -and $t.people.Count -gt 0
 }
-Check "GET /api/relations 有 5 节点与边" {
+Check "GET /api/relations 有 9 节点与边" {
     $g = Api "/api/relations"
-    $g.nodes.Count -eq 5 -and $g.edges.Count -gt 0
+    $g.nodes.Count -eq 9 -and $g.edges.Count -gt 0
 }
 Check "GET /api/works?person=lenin 筛选生效" {
     $all = (Api "/api/works").Count
@@ -164,7 +164,7 @@ Check "SQL 注入串不导致 500 且数据完好" {
     $before = (Api "/api/people").Count
     $r = Api "/api/search?q=$(Esc "'; DROP TABLE person;--")"
     $after = (Api "/api/people").Count
-    $r.total -ge 0 -and $before -eq 5 -and $after -eq 5
+    $r.total -ge 0 -and $before -eq 9 -and $after -eq 9
 }
 Check "FTS 语法字符不导致 500" {
     $ok = $true
@@ -211,7 +211,8 @@ Check "静态资源带长期缓存头" {
 
 Write-Host ""
 Write-Host "人物肖像资产 (公有领域历史照片)" -ForegroundColor Yellow
-foreach ($slug in @("marx", "engels", "lenin", "mao", "guevara")) {
+# 注意：zetkin 暂无照片（镜像站未收录），前端按设计回退为矢量插画，故不在本组断言内。
+foreach ($slug in @("marx", "engels", "lenin", "luxemburg", "dimitrov", "ho-chi-minh", "mao", "guevara")) {
     Check "GET /assets/portraits/$slug.{webp,jpg} 双格式可用" {
         $w = Invoke-WebRequest "$BaseUrl/assets/portraits/$slug.webp" -UseBasicParsing
         $j = Invoke-WebRequest "$BaseUrl/assets/portraits/$slug.jpg" -UseBasicParsing

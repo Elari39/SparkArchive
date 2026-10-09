@@ -51,19 +51,27 @@ for (const [route, name] of ROUTES) {
       textLen: (document.body.innerText ?? "").length,
       nav: document.querySelectorAll("header nav a").length,
       cards: document.querySelectorAll(".brutal-card").length,
+      wall: document.querySelectorAll("[data-hero-wall] [data-portrait]").length,
     }))()`,
-  )) as { appLen: number; h1: string; textLen: number; cards: number }
+  )) as { appLen: number; h1: string; textLen: number; cards: number; wall: number }
 
   const mounted = info.appLen > 400 && info.textLen > 200 && info.h1.length > 0
   const noErr = errors.length === 0
+  // 首页门楣照片墙必须恰好填满 3×2 六格。
+  // 回归背景：照片上限曾写死为 5，第 6 格被高饱和色块占据，五张照片反而成了陪衬。
+  const wallOk = route !== "/" || info.wall === 6
 
-  if (mounted && noErr) {
+  if (mounted && noErr && wallOk) {
     pass++
-    console.log(`  [PASS] ${route}  h1="${info.h1}"  卡片=${info.cards}  文本=${info.textLen}`)
+    console.log(
+      `  [PASS] ${route}  h1="${info.h1}"  卡片=${info.cards}  文本=${info.textLen}` +
+        (route === "/" ? `  门楣墙=${info.wall}` : ""),
+    )
   } else {
     fail++
     console.log(`  [FAIL] ${route}`)
     console.log(`         mounted=${mounted} appLen=${info.appLen} textLen=${info.textLen} h1="${info.h1}"`)
+    if (!wallOk) console.log(`         首页门楣照片墙应为 6 格，实际 ${info.wall}`)
     if (errors.length) console.log("         控制台错误: " + errors.slice(0, 3).join(" | "))
   }
 

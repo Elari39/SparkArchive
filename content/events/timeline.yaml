@@ -38,10 +38,10 @@ events:
   - year: 1889
     date_text: 7月
     title: 第二国际成立
-    body: 在恩格斯指导下成立，推动工人运动国际化，后因对帝国主义战争立场分歧而瓦解。
+    body: 国际社会主义者代表大会在巴黎召开，第二国际成立。蔡特金作为德国妇女代表发表《为了妇女的解放》的演讲，被推选为大会书记之一。
     location: 巴黎
     category: 组织
-    people: [engels]
+    people: [engels, zetkin]
   - year: 1895
     date_text: 8月5日
     title: 恩格斯逝世
@@ -49,6 +49,13 @@ events:
     location: 伦敦
     category: 牺牲
     people: [engels]
+  - year: 1899
+    date_text: 年中
+    title: 《社会改良还是革命？》出版
+    body: 卢森堡系统批判伯恩施坦修正主义，论证社会改良不能替代社会革命，成为第二国际内部理论斗争的焦点。
+    location: 柏林
+    category: 理论
+    people: [luxemburg]
   - year: 1902
     date_text: 3月
     title: 《怎么办？》出版
@@ -56,6 +63,34 @@ events:
     location: 斯图加特
     category: 理论
     people: [lenin]
+  - year: 1910
+    date_text: 8月
+    title: 国际社会主义妇女代表会议确立妇女节
+    body: 哥本哈根第二届国际社会主义妇女代表会议根据蔡特金的倡议，规定每年设立一个国际妇女节，以推动劳动妇女争取选举权和社会权利。
+    location: 哥本哈根
+    category: 组织
+    people: [zetkin]
+  - year: 1913
+    date_text: 年中
+    title: 《资本积累论》出版
+    body: 卢森堡拓展马克思的资本积累理论，论证资本主义必须向非资本主义地区扩张，把帝国主义归结为一种特定的积累方法。该书在第二国际内部引发激烈争论。
+    location: 柏林
+    category: 理论
+    people: [luxemburg]
+  - year: 1914
+    date_text: 8月
+    title: 第二国际的破产
+    body: 第一次世界大战爆发，德国社会民主党议会党团投票支持战争拨款，第二国际各主要政党纷纷倒向本国政府。卢森堡、蔡特金等左派与之决裂。
+    location: 柏林
+    category: 组织
+    people: [luxemburg, zetkin]
+  - year: 1916
+    date_text: 4月
+    title: 《社会民主党的危机》秘密出版
+    body: 卢森堡以"尤尼乌斯"笔名在狱中写成的小册子秘密出版，控诉社会民主党右翼背叛无产阶级国际主义，提出"社会主义还是野蛮状态"的历史抉择。
+    location: 柏林
+    category: 理论
+    people: [luxemburg]
   - year: 1916
     date_text: 年中
     title: 《帝国主义是资本主义的最高阶段》
@@ -71,12 +106,19 @@ events:
     category: 革命
     people: [lenin]
   - year: 1919
+    date_text: 1月15日
+    title: 卢森堡与李卜克内西遇害
+    body: 柏林工人起义遭"自由军团"镇压，德国共产党领导人卢森堡与卡尔·李卜克内西被捕后遭杀害，成为德国工人运动最沉痛的损失。
+    location: 柏林
+    category: 牺牲
+    people: [luxemburg]
+  - year: 1919
     date_text: 3月
     title: 共产国际成立
-    body: 第三国际在莫斯科成立，推动世界革命，后于1943年解散。
+    body: 第三国际在莫斯科成立，推动世界革命，后于1943年解散。1935年季米特洛夫当选其总书记。
     location: 莫斯科
     category: 组织
-    people: [lenin]
+    people: [lenin, dimitrov]
   - year: 1919
     date_text: 5月4日
     title: 五四运动
@@ -112,6 +154,20 @@ events:
     location: 罗萨里奥
     category: 生平
     people: [guevara]
+  - year: 1930
+    date_text: 2月3日
+    title: 越南共产党成立
+    body: 胡志明在香港九龙主持召开建党会议，通过他起草的简要政纲与党章，把越南国内各共产主义组织统一为越南共产党。
+    location: 中国香港
+    category: 组织
+    people: [ho-chi-minh]
+  - year: 1933
+    date_text: 9月21日
+    title: 莱比锡审判
+    body: 纳粹当局借国会纵火案在莱比锡开庭审讯季米特洛夫。他拒绝依赖法庭指定的辩护人，自行辩护揭露纵火案是法西斯策划的阴谋，同年12月被宣告无罪，成为世界反法西斯斗争的象征。
+    location: 莱比锡
+    category: 革命
+    people: [dimitrov]
   - year: 1934
     date_text: 10月
     title: 长征开始
@@ -119,6 +175,20 @@ events:
     location: 江西
     category: 战争
     people: [mao]
+  - year: 1935
+    date_text: 8月
+    title: 共产国际第七次代表大会
+    body: 季米特洛夫作报告，论证法西斯主义是财政资本的公开恐怖专政，提出建立反法西斯统一战线，并当选共产国际执委会总书记。
+    location: 莫斯科
+    category: 组织
+    people: [dimitrov]
+  - year: 1936
+    date_text: 10月
+    title: 国际纵队成立
+    body: 西班牙内战爆发后，在季米特洛夫倡议与组织下，来自五十四个国家的共产党员和志愿人员组成国际纵队，与西班牙人民并肩抗击法西斯。
+    location: 西班牙
+    category: 革命
+    people: [dimitrov]
   - year: 1938
     date_text: 5月
     title: 《论持久战》发表
@@ -133,6 +203,13 @@ events:
     location: 延安
     category: 文化
     people: [mao]
+  - year: 1945
+    date_text: 9月2日
+    title: 越南民主共和国成立
+    body: 八月革命胜利后，胡志明在河内巴亭广场宣读《独立宣言》，宣告越南民主共和国成立，这是东南亚第一个由共产党领导建立的共和国。
+    location: 河内
+    category: 建设
+    people: [ho-chi-minh]
   - year: 1949
     date_text: 10月1日
     title: 中华人民共和国成立
@@ -140,6 +217,13 @@ events:
     location: 北京
     category: 建设
     people: [mao]
+  - year: 1954
+    date_text: 5月7日
+    title: 奠边府战役胜利
+    body: 越南军民取得奠边府战役胜利，法国在印度支那的殖民统治由此终结，同年日内瓦会议结束法国在印度支那的百年殖民统治。
+    location: 奠边府
+    category: 战争
+    people: [ho-chi-minh]
   - year: 1956
     date_text: 4月
     title: 《论十大关系》
@@ -175,3 +259,10 @@ events:
     location: 玻利维亚
     category: 牺牲
     people: [guevara]
+  - year: 1969
+    date_text: 9月2日
+    title: 胡志明逝世
+    body: 胡志明在河内逝世，享年79岁。越南政府公布其逝世时间为9月3日，以免与国庆纪念重叠。
+    location: 河内
+    category: 牺牲
+    people: [ho-chi-minh]

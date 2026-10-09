@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useAsync } from '@/composables/useAsync'
 import { getPeople } from '@/api'
 import type { PersonSummary } from '@/api/types'
-import { SITE } from '@/config/site'
+import { SITE, HERO_WALL } from '@/config/site'
 import { useSiteCopy } from '@/composables/useSiteCopy'
 import { useSiteStore } from '@/stores/site'
 import Portrait from '@/components/Portrait.vue'
@@ -16,31 +16,48 @@ const site = useSiteStore()
 const meta = computed(() => site.meta)
 const people = useAsync((signal) => getPeople(signal))
 
-/** 门楣档案墙：最多 5 张人物照片，其余补构成主义色块，凑满 3×2 网格 */
+/** 门楣档案墙：按 HERO_WALL 的策展顺序填满 3×2 网格；人数不足时才补构成主义色块 */
 type Cell =
   | { kind: 'person'; person: PersonSummary }
-  | { kind: 'decor'; decor: 'brass' | 'red' | 'ink' }
+  | { kind: 'decor'; decor: 'ink' | 'red' | 'brass' }
 
-// 档案墙网格参数：最多 5 张照片、每行 3 格、共 2 行
-const MAX_PHOTOS = 5
+// 档案墙网格参数：每行 3 格、共 2 行，正好容纳 6 位人物
 const GRID_COLS = 3
 const GRID_ROWS = 2
 const WALL_SLOTS = GRID_COLS * GRID_ROWS
-const DECORS = ['brass', 'red', 'ink'] as const
+
+// 兜底色块：仅在人物数量不足 6 位时才出现。
+// 顺序刻意以深色打头——工业黄是整块版面唯一的亮饱和色，一旦出现在缺口处会抢走视线，
+// 因此把它排在最后，确保降级状态也不会重现「缺口被黄块占据」的观感问题。
+const DECORS = ['ink', 'red', 'brass'] as const
 
 const wallCells = computed<Cell[]>(() => {
-  const list = (people.data.value ?? []).slice(0, MAX_PHOTOS)
-  const cells: Cell[] = list.map((person) => ({ kind: 'person', person }))
+  const all = people.data.value ?? []
+  const bySlug = new Map(all.map((person) => [person.slug, person]))
+
+  // 先按策展顺序取，再按后端顺序（出生日期升序）补足，最后才用色块兜底。
+  const picked: PersonSummary[] = []
+  const chosen = new Set<string>()
+  const take = (person: PersonSummary | undefined) => {
+    if (!person || chosen.has(person.slug) || picked.length >= WALL_SLOTS) return
+    picked.push(person)
+    chosen.add(person.slug)
+  }
+
+  HERO_WALL.forEach((slug) => take(bySlug.get(slug)))
+  all.forEach(take)
+
+  const cells: Cell[] = picked.map((person) => ({ kind: 'person', person }))
   for (let i = 0; cells.length < WALL_SLOTS; i++) {
     cells.push({ kind: 'decor', decor: DECORS[i % DECORS.length] })
   }
   return cells
 })
 
-const DECOR_BG: Record<'brass' | 'red' | 'ink', string> = {
-  brass: 'bg-brass',
-  red: 'bg-red',
+const DECOR_BG: Record<'ink' | 'red' | 'brass', string> = {
   ink: 'bg-ink',
+  red: 'bg-red',
+  brass: 'bg-brass',
 }
 </script>
 
@@ -84,7 +101,7 @@ const DECOR_BG: Record<'brass' | 'red' | 'ink', string> = {
 
         <!-- 真实照片档案墙 -->
         <div class="relative hidden lg:block" aria-hidden="true">
-          <div class="grid grid-cols-3 gap-3">
+          <div class="grid grid-cols-3 gap-3" data-hero-wall>
             <template v-for="(c, i) in wallCells" :key="i">
               <figure
                 v-if="c.kind === 'person'"

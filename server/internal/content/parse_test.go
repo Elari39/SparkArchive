@@ -212,8 +212,8 @@ func TestLoadRealContent(t *testing.T) {
 	if err != nil {
 		t.Fatalf("加载真实内容失败: %v", err)
 	}
-	if len(a.People) != 5 {
-		t.Errorf("人物数 = %d, 期望 5", len(a.People))
+	if len(a.People) != 9 {
+		t.Errorf("人物数 = %d, 期望 9", len(a.People))
 	}
 	if len(a.Works) == 0 || len(a.Events) == 0 || len(a.Terms) == 0 || len(a.Edges) == 0 {
 		t.Fatalf("内容不完整: works=%d events=%d terms=%d edges=%d",

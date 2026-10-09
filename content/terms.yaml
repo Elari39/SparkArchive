@@ -65,8 +65,8 @@ terms:
       革命转变时期。同这个时期相适应的也有一个政治上的过渡时期，这个时期的国家只能是无产阶级的革命
       专政。"无产阶级专政的实质是无产阶级的政治统治，其历史使命是消灭一切阶级和阶级差别，最终使
       国家自行消亡。
-    people: [marx, lenin, mao]
-    related: [class-struggle, vanguard-party, theory-of-the-state]
+    people: [marx, lenin, mao, dimitrov]
+    related: [class-struggle, vanguard-party, people-democracy]
     sources: [critique-gotha, state-and-revolution]
   - slug: imperialism
     term: 帝国主义
@@ -77,9 +77,9 @@ terms:
       形成垄断组织；银行资本与工业资本融合为金融资本并形成金融寡头；资本输出具有特别重要的意义；
       国际垄断同盟形成并瓜分世界；最大资本主义列强已把世界领土分割完毕。帝国主义是寄生的、腐朽的、
       垂死的资本主义，是无产阶级社会革命的前夜。
-    people: [lenin, guevara]
-    related: [proletariat, national-liberation]
-    sources: [imperialism]
+    people: [lenin, luxemburg, guevara]
+    related: [proletariat, national-liberation, capital-accumulation]
+    sources: [imperialism, accumulation-of-capital]
   - slug: vanguard-party
     term: 先锋队
     aliases: [先锋队理论]
@@ -156,9 +156,9 @@ terms:
       列宁提出民族自决权理论，主张被压迫民族享有自由分离和建立独立民族国家的权利，把民族解放运动看作
       无产阶级世界革命的一部分。这一理论对20世纪亚非拉民族解放运动产生了深远影响。格瓦拉进一步主张
       亚非拉被压迫民族应团结起来，共同反抗帝国主义与新殖民主义的剥削。
-    people: [lenin, mao, guevara]
-    related: [imperialism, new-democracy, foquismo]
-    sources: [imperialism, on-new-democracy]
+    people: [lenin, mao, guevara, ho-chi-minh]
+    related: [imperialism, new-democracy, colonial-revolution]
+    sources: [imperialism, on-new-democracy, vietnam-independence-declaration]
   - slug: dialectics
     term: 唯物辩证法
     aliases: [辩证法]
@@ -179,10 +179,13 @@ terms:
       马克思在《资本论》第一卷中论证，资本家把榨取来的剩余价值的一部分重新转化为资本，扩大生产规模，
       这就是资本积累。资本积累必然造成资本有机构成的提高和相对过剩人口的产生，导致财富在资产阶级
       一极积累、贫困在无产阶级一极积累。生产社会化与生产资料私人占有之间的矛盾日益尖锐，最终
-      "剥夺者就要被剥夺"。
-    people: [marx]
-    related: [surplus-value, bourgeoisie]
-    sources: [capital-vol1]
+      "剥夺者就要被剥夺"。卢森堡在《资本积累论》中接续《资本论》第二卷的资本流通过程，追问剩余价值
+      如何在全社会范围内实现，论证资本主义必须不断向非资本主义地区扩张，从而把资本积累与帝国主义、
+      战争联结起来。这一拓展在第二国际内部引发激烈争论，列宁批评该书"完全歪曲了马克思"，争论至今
+      仍在继续。
+    people: [marx, luxemburg]
+    related: [surplus-value, bourgeoisie, imperialism]
+    sources: [capital-vol1, accumulation-of-capital]
   - slug: theory-of-the-state
     term: 国家学说
     aliases: []
@@ -194,3 +197,84 @@ terms:
     people: [engels, lenin]
     related: [dictatorship-of-proletariat, class-struggle]
     sources: [origin-family, state-and-revolution]
+  - slug: womens-emancipation
+    term: 妇女解放
+    aliases: [妇女问题]
+    definition: 马克思主义关于妇女受压迫根源及其解放道路的理论，认为妇女受压迫的根源在于私有制，妇女解放是无产阶级解放事业的组成部分。
+    body: >-
+      恩格斯在《家庭、私有制和国家的起源》中论证，妇女受压迫的根源在于私有制，妇女解放的前提是消灭
+      私有制并使妇女重新回到公共劳动中去。蔡特金把这一判断发展为国际社会主义妇女运动的纲领：她指出
+      妇女参加社会劳动是实现自身解放的第一步，资产阶级妇女运动只代表少数上层妇女的利益，解决不了
+      劳动妇女的苦难；因此妇女的解放只能是"劳动从资本中解放出来的事业"的一部分。1910年，根据她的
+      倡议，国际社会主义妇女代表会议规定每年设立国际妇女节。需要说明的是，后世研究者在肯定这一理论
+      确立了马克思主义妇女观基本框架的同时，也指出把性别压迫完全还原为阶级压迫有其局限。
+    people: [engels, zetkin, marx]
+    related: [proletariat, class-struggle]
+    sources: [origin-family, zetkin-womens-liberation]
+  - slug: mass-strike
+    term: 群众罢工
+    aliases: [政治性群众罢工]
+    definition: 革命时期无产阶级最有力的斗争形式，不是一次性的策略工具，而是工人阶级自我组织和自我教育的长期过程。
+    body: >-
+      卢森堡在《群众罢工、党和工会》中论证，群众罢工与工会的日常经济罢工不同，它是革命时期无产阶级
+      最有力的斗争形式。党不应把它理解为可以随意发动或停止的一次性手段，而应把它看作工人阶级在斗争
+      中自我组织、自我教育并不断积累政治经验的长期过程。俄国1905年革命提供了这一理论的现实依据。
+      卢森堡与蔡特金都强调，工人阶级的力量来自自身的觉悟与联合，而不是来自领袖的号令或议会的妥协。
+    people: [luxemburg, zetkin]
+    related: [class-struggle, vanguard-party]
+    sources: [crisis-of-social-democracy]
+  - slug: socialist-democracy
+    term: 社会主义民主
+    aliases: [党内民主]
+    definition: 主张无产阶级专政应是工人阶级多数人的统治而非少数人对多数的压制，社会主义必须依靠群众参与、批评自由和公共生活的活跃来维持生命力。
+    body: >-
+      卢森堡是在无产阶级专政问题上最早提出警示的马克思主义者之一。她在《论俄国革命》手稿中主张，
+      社会主义不能只靠少数革命者的命令自上而下地推行，而必须依靠人民群众的积极参与和批评自由。
+      她提出"自由永远是持不同意见者的自由"，认为缺少批评自由的社会主义会因失去生命力而僵化。
+      这一论述构成了她对马克思主义政治学说最具特色的贡献，也是20世纪社会主义历史反复引发讨论的
+      议题。
+    people: [luxemburg, marx]
+    related: [dictatorship-of-proletariat, historical-materialism]
+    sources: [russian-revolution]
+  - slug: united-front
+    term: 反法西斯统一战线
+    aliases: [人民阵线, 工人统一战线]
+    definition: 面对法西斯主义进攻，共产党联合社会民主党工人群众并团结中间阶层，以孤立反动势力的策略。
+    body: >-
+      季米特洛夫在共产国际第七次代表大会上系统提出这一策略。他论证法西斯主义是最反动、最主张民族
+      沙文主义、最抱帝国主义野心的财政资本的公开恐怖专政；由此得出结论：在法西斯进攻面前，资本主义
+      国家劳动群众当前的主要任务不是选择无产阶级专政还是资产阶级专政，而是选择资产阶级民主还是
+      法西斯主义。因此共产党必须正确处理同社会民主党的关系，实现工会的统一，建立工人统一战线，并在
+      此基础上建立广泛的反法西斯人民阵线。在殖民地与半殖民地国家，共产党人最重要的任务是建立人民
+      反帝阵线。这一策略对全世界反法西斯斗争和中国抗日民族统一战线的形成都产生了重要影响。
+    people: [dimitrov, mao, zetkin]
+    related: [vanguard-party, national-liberation, people-democracy]
+    sources: [dimitrov-fascism-report, on-new-democracy]
+  - slug: people-democracy
+    term: 人民民主
+    aliases: [人民民主政权]
+    definition: 战后东欧国家在不建立苏维埃制度的情况下，由人民民主政权执行无产阶级专政职能、向社会主义过渡的政权形式。
+    body: >-
+      季米特洛夫在1948年保加利亚共产党第五次代表大会上总结本国经验时论证，在国际力量对比发生变化的
+      条件下，人民民主国家可以不建立苏维埃制度，只要能够巩固和发展人民民主政权，并依靠苏联和其他
+      人民民主国家的支持，就可以通过这一政权形式从资本主义过渡到社会主义。他指出，苏维埃制度和
+      人民民主制度是同一个无产阶级专政政权的两种形式。在农业改造方面，他主张不先实行土地国有化，
+      而通过组织农业生产合作社逐步解决农业的社会主义改造问题。1948年后东欧各国普遍按苏联模式建设，
+      这一探索在实践中未能充分展开。
+    people: [dimitrov]
+    related: [dictatorship-of-proletariat, united-front]
+    sources: [dimitrov-fascism-report]
+  - slug: colonial-revolution
+    term: 殖民地革命道路
+    aliases: [殖民地民族解放]
+    definition: 殖民地半殖民地国家的革命必须由无产阶级政党领导，以民族解放为首要任务，团结一切爱国力量，并与国际无产阶级革命相互支援。
+    body: >-
+      列宁的民族和殖民地问题理论为殖民地国家的革命提供了理论依据，主张被压迫民族享有自决权，把民族
+      解放运动看作无产阶级世界革命的一部分。胡志明在《革命之路》中把这一理论运用于越南的具体条件，
+      指出殖民地人民的革命必须由无产阶级政党领导，必须与宗主国的工人运动和国际无产阶级革命相互
+      支援，并把民族解放置于各种分歧之上，建立广泛的民族统一战线。1945年9月2日，他在河内巴亭广场
+      宣读《独立宣言》，宣告越南民主共和国成立，这是东南亚第一个由共产党领导建立的共和国。他关于
+      殖民地革命道路的论述，对亚非拉民族解放运动产生了广泛影响。
+    people: [ho-chi-minh, lenin]
+    related: [national-liberation, new-democracy]
+    sources: [vietnam-independence-declaration, imperialism]

@@ -14,7 +14,7 @@ const { data: people, loading, error, reload } = useAsync((signal) => getPeople(
       no="01"
       title="收录人物"
       sub="Figures"
-      lead="本站收录马克思、恩格斯、列宁、毛泽东、切·格瓦拉五个人的完整档案。每人档案包含生平年表、简介、政治／经济／文化三域贡献、思想体系，以及如实的争议与评价。"
+      lead="本站收录马克思、恩格斯、蔡特金、列宁、卢森堡、季米特洛夫、胡志明、毛泽东、切·格瓦拉九位革命者的完整档案。每人档案包含生平年表、简介、政治／经济／文化三域贡献、思想体系，以及如实的争议与评价。"
     />
     <section class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
       <AsyncBoundary :loading="loading" :error="error" :on-retry="reload">

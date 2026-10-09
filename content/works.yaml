@@ -233,3 +233,110 @@ works:
         note: 论新人塑造的两个方面。
       - text: 我们革命者最根本的任务，就是创造新人。
         note: 全文的核心主张。
+  - slug: accumulation-of-capital
+    person: luxemburg
+    title: 资本积累论
+    year: 1913
+    category: 政治经济学
+    summary: 拓展马克思的资本积累理论，论证资本主义必须不断向非资本主义地区扩张，从而走向帝国主义与战争。
+    source: 罗莎·卢森堡《资本积累论》
+    source_url: https://www.marxists.org/chinese/rosa-luxemburg/index.htm
+    excerpts:
+      - text: 毫无疑问，关于帝国主义经济根源的解释，必须从资本积累的规律中推断出来。因为，根据经济常识，作为一个整体的帝国主义只不过是一个特定的积累方法。
+        note: 全书结论，把帝国主义归结为资本积累的特定历史方法。
+      - text: 剩余价值既不能由工人，也不能由资本家来实现，而是由那种属于非资本主义生产方式的社会阶层或社会阶级来实现。
+        note: 论剩余价值的实现与非资本主义市场的关系。
+  - slug: crisis-of-social-democracy
+    person: luxemburg
+    title: 社会民主党的危机
+    year: 1916
+    category: 政论
+    summary: 以"尤尼乌斯"笔名在狱中写成，控诉社会民主党右翼支持帝国主义战争、背叛无产阶级国际主义。
+    source: 罗莎·卢森堡《社会民主党的危机》（尤尼乌斯小册子）
+    source_url: https://www.marxists.org/chinese/rosa-luxemburg/index.htm
+    excerpts:
+      - text: 要么走向社会主义，要么走向野蛮状态。
+        note: 全书提出的历史抉择，通行中译作"社会主义还是野蛮状态"。
+  - slug: russian-revolution
+    person: luxemburg
+    title: 论俄国革命
+    year: 1918
+    category: 政治理论
+    summary: 狱中未完成手稿，在支持十月革命的同时，对布尔什维克的若干做法提出批评，主张社会主义必须保持批评自由。
+    source: 罗莎·卢森堡《论俄国革命》
+    source_url: https://www.marxists.org/chinese/rosa-luxemburg/index.htm
+    excerpts:
+      - text: 自由永远是持不同意见者的自由。
+        note: 手稿中论社会主义民主的核心表述。
+  - slug: zetkin-womens-liberation
+    person: zetkin
+    title: 为了妇女的解放
+    year: 1889
+    category: 妇女运动
+    summary: 在第二国际成立大会上的演说，论证妇女参加社会劳动是自身解放的第一步，奠定无产阶级妇女运动的指导思想。
+    source: 克拉拉·蔡特金在第二国际成立大会上的演说
+    source_url: https://www.marxists.org/chinese/clara-zetkin/index.htm
+    excerpts:
+      - text: 妇女的解放同全人类的解放一样，最终将是劳动从资本中解放出来的事业。
+        note: 演说中对妇女解放与无产阶级解放关系的界定。
+  - slug: zetkin-communist-womens-movement
+    person: zetkin
+    title: 关于共产主义妇女运动问题的报告
+    year: 1921
+    category: 妇女运动
+    summary: 在共产国际第三次代表大会上所作报告，论证吸收劳动妇女参加革命的阶级斗争是工人阶级历史使命的组成部分。
+    source: 克拉拉·蔡特金在共产国际第三次代表大会上的报告
+    source_url: https://www.marxists.org/chinese/clara-zetkin/index.htm
+    excerpts:
+      - text: 如果没有妇女参加，无产阶级就不能将自己的经济斗争和政治斗争进行到底。
+        note: 报告中对妇女参加阶级斗争必要性的论断。
+  - slug: dimitrov-leipzig-speech
+    person: dimitrov
+    title: 莱比锡审判上的最后发言
+    year: 1933
+    category: 政论
+    summary: 在纳粹法庭上自行辩护，用事实揭露国会纵火案是法西斯精心策划的阴谋，成为反法西斯斗争的经典文献。
+    source: 格奥尔基·季米特洛夫在莱比锡法庭上的发言
+    source_url: https://www.marxists.org/chinese/dimitrov/index.htm
+    excerpts:
+      - text: 历史的车轮在转动……它现在和将来都在转动，直到共产主义的彻底胜利！
+        note: 法庭上反驳纳粹指控时的结束语。
+  - slug: dimitrov-fascism-report
+    person: dimitrov
+    title: 法西斯的进攻与共产国际的任务
+    year: 1935
+    category: 政治理论
+    summary: 在共产国际第七次代表大会上的报告，系统论证法西斯主义的阶级本质，提出建立反法西斯统一战线的策略。
+    source: 格奥尔基·季米特洛夫在共产国际第七次代表大会上的报告
+    source_url: https://www.marxists.org/chinese/dimitrov/index.htm
+    excerpts:
+      - text: 法西斯主义是最反动、最主张民族沙文主义、最抱帝国主义野心的财政资本的公开的恐怖专政。
+        note: 报告中对法西斯主义本质的界定。
+      - text: 任何呆板的公式都是我们的死敌。
+        note: 论各国党必须根据本国具体情况决定策略。
+  - slug: prison-diary
+    person: ho-chi-minh
+    title: 狱中日记
+    year: 1943
+    category: 诗集
+    summary: 1942年被国民党当局羁押于中国广西期间写下的汉诗一百余首，记录狱中生活，展现革命者的意志与乐观精神。
+    source: 胡志明《狱中日记》
+    source_url: https://www.marxists.org/chinese/ho-chi-minh/index.htm
+    excerpts:
+      - text: 身体在狱中，精神在狱外。欲成大事业，精神更要大。
+        note: 诗集卷首题词。
+      - text: 老夫原不爱吟诗，因为囚中无所为。聊借吟诗消永日，且吟且待自由时。
+        note: 卷首《开卷》。
+  - slug: vietnam-independence-declaration
+    person: ho-chi-minh
+    title: 越南独立宣言
+    year: 1945
+    category: 纲领
+    summary: 1945年9月2日在河内巴亭广场宣读，宣告越南民主共和国成立，是越南民族独立的奠基性文献。
+    source: 胡志明《独立宣言》（1945年9月2日）
+    source_url: https://www.marxists.org/chinese/ho-chi-minh/index.htm
+    excerpts:
+      - text: 一切人生来就是平等的。他们应享有天赋的不可侵犯的权利，这就是：生存、自由和追求幸福的权利。
+        note: 开篇引美国《独立宣言》，并推及全世界各民族生来平等。
+      - text: 越南享有自由和独立的权利，而且事实上已经成了一个自由和独立的国家。
+        note: 宣言结论部分，向全世界宣告越南独立。

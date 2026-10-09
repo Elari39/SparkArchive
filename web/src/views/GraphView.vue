@@ -9,7 +9,7 @@ import AsyncBoundary from '@/components/AsyncBoundary.vue'
 const { data: graph, loading, error, reload } = useAsync((signal) => getGraph(signal))
 const active = ref<string | null>(null)
 
-/** 固定环形布局：五人均匀分布，保证图谱稳定可预期 */
+/** 固定环形布局：人物均匀分布，保证图谱稳定可预期 */
 const W = 720
 const H = 460
 const CX = W / 2
