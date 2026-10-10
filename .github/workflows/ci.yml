@@ -1,0 +1,197 @@
+name: CI
+
+# ---------------------------------------------------------------------------
+# 本仓库的「交付物」是什么，决定了 CD 的形态：
+#   站点是一个 SPA，所有数据都来自 /api/*，因此**不能**发 Pages——
+#   静态托管只会得到一个空壳页面。真正自包含的产物是**镜像**：
+#   前端产物在构建期 embed 进二进制、数据库也在构建期烘焙，运行时只读。
+#   所以 CD = 构建镜像 → 冒烟 → 推送到 GHCR，无需任何保密凭据。
+#
+# verify 每次 push / PR 都跑；publish 仅在 main 上、且 verify 全绿之后跑。
+# 两个 job 放同一文件，用 needs 门控，比 workflow_run 省事也不会重复跑。
+# ---------------------------------------------------------------------------
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  GO_VERSION: '1.27'
+  # 与本地生成 pnpm-lock.yaml 的版本一致（lockfileVersion 9.0）
+  PNPM_VERSION: '12.5.1'
+
+jobs:
+  # ---------------------------------------------------------------- 后端验证
+  go:
+    name: Go（gofmt / vet / test）
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: server/go.sum
+
+      - name: gofmt 检查
+        run: |
+          unformatted="$(gofmt -l .)"
+          if [ -n "$unformatted" ]; then
+            echo "::error::以下文件未通过 gofmt："
+            echo "$unformatted"
+            exit 1
+          fi
+
+      - run: go vet ./...
+
+      # 测试覆盖构建期约束：引用完整性、每人四域章节、每人至少一部著作、关系边两端存在
+      - run: go test ./...
+
+  # ---------------------------------------------------------------- 前端验证
+  web:
+    name: Web（type-check / build）
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        # vite 8 / @vitejs/plugin-vue 6 声明 engines: ^20.19.0 || >=22.12.0。
+        # 只取两条 LTS 线：24 与 Dockerfile 的 node:24-alpine 一致（实际交付版本），
+        # 22 作为受支持的下限护栏。不要随手加 20。
+        node: ['22', '24']
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm type-check
+      - run: pnpm build
+
+  # ------------------------------------------------------- 发布镜像（仅 main）
+  publish:
+    name: 发布镜像到 GHCR
+    needs: [go, web]
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # 发布不能中途取消，因此并发组与验证 job 分开且 cancel-in-progress: false
+    concurrency:
+      group: publish-main
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v7
+
+      # GHCR 要求镜像名全小写，而仓库名是 Elari39/SparkArchive
+      - name: 计算小写镜像名
+        id: image
+        run: echo "name=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v4
+
+      - uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/metadata-action@v6
+        id: meta
+        with:
+          images: ${{ steps.image.outputs.name }}
+          tags: |
+            type=ref,event=branch
+            type=sha,format=short
+            type=raw,value=latest
+
+      # 先构建到本地（不推），验证通过后再推——避免把坏镜像发出去
+      - name: 构建镜像
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          load: true
+          tags: sparkarchive:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          provenance: false
+          sbom: false
+
+      # 这一步是真正的端到端校验：go test 用的是空的 webdist，
+      # 只有这里才能证明「前端确实被 embed、内容确实被烘焙」。
+      - name: 冒烟测试镜像
+        run: |
+          set -euo pipefail
+          docker run -d --name ci-smoke -p 12026:12026 sparkarchive:ci
+          trap 'docker rm -f ci-smoke >/dev/null 2>&1 || true' EXIT
+
+          for _ in $(seq 1 40); do
+            curl -fsS http://127.0.0.1:12026/api/health >/dev/null 2>&1 && break
+            sleep 1
+          done
+
+          echo "--- /api/health ---"
+          curl -fsS http://127.0.0.1:12026/api/health
+          echo
+
+          echo "--- /api/meta ---"
+          meta="$(curl -fsS http://127.0.0.1:12026/api/meta)"
+          echo "$meta"
+
+          echo "--- 断言 ---"
+          echo "$meta" | jq -e '.counts.people == 15' >/dev/null
+          echo "人物数 = 15 ✓"
+          echo "$meta" | jq -e '.counts.works > 0 and .counts.events > 0 and .counts.terms > 0' >/dev/null
+          echo "著作 / 事件 / 术语均已入库 ✓"
+
+          test "$(curl -fsS -o /dev/null -w '%{http_code}' http://127.0.0.1:12026/)" = "200"
+          echo "首页 200 ✓"
+          test "$(curl -fsS -o /dev/null -w '%{http_code}' http://127.0.0.1:12026/assets/portraits/marx.jpg)" = "200"
+          echo "肖像资源 200 ✓（前端 embed 生效）"
+          test "$(curl -fsS -o /dev/null -w '%{http_code}' http://127.0.0.1:12026/assets/portraits/__missing__.jpg)" = "404"
+          echo "缺失静态资源 404 ✓"
+
+      - name: 推送到 GHCR
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          provenance: false
+          sbom: false
+
+      - name: 输出镜像地址
+        run: |
+          echo "### 已发布镜像" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          echo "${{ steps.meta.outputs.tags }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

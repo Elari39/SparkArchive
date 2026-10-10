@@ -2,9 +2,11 @@
 
 > 全世界无产者，联合起来！
 
+[![CI](https://github.com/Elari39/SparkArchive/actions/workflows/ci.yml/badge.svg)](https://github.com/Elari39/SparkArchive/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-d62828.svg)](LICENSE)
 [![Go](https://img.shields.io/badge/Go-1.27-00ADD8.svg)](server/go.mod)
 [![Vue](https://img.shields.io/badge/Vue-3.5-42b883.svg)](web/package.json)
+[![Image](https://img.shields.io/badge/ghcr.io-sparkarchive-2496ED.svg?logo=docker&logoColor=white)](https://github.com/Elari39/SparkArchive/pkgs/container/sparkarchive)
 
 无产阶级革命理论与实践的文献档案。收录**马克思、恩格斯、普列汉诺夫、蔡特金、片山潜、列宁、卢森堡、柯伦泰、李大钊、胡志明、葛兰西、毛泽东、卡斯特罗、切·格瓦拉、桑卡拉**
 十五位革命者的生平、著作与思想，记录国际共产主义运动的理论源流与实践历程。
@@ -22,6 +24,17 @@ docker compose up -d --build
 ```
 
 打开 <http://localhost:12026>。
+
+不想本地构建的话，可直接拉取 CI 发布到 GitHub Packages 的镜像：
+
+```bash
+docker run -d --name sparkarchive -p 12026:12026 \
+  --read-only --tmpfs /tmp \
+  --security-opt no-new-privileges:true \
+  ghcr.io/elari39/sparkarchive:latest
+```
+
+镜像已把前端产物与数据库烘焙在内，运行时只读，不挂任何卷。
 
 > **提示 1（端口）**：本项目端口统一为 **12026**。刻意避开过常见的 1226 —— 该端口容易被本机
 > 其他软件（如微信输入法 `wetype_server.exe`）占用。一旦宿主机目标端口被占，Docker 会**静默跳过
@@ -168,8 +181,8 @@ make dev-web     # 启动前端 :5173（/api 代理到 12026）
 make test        # go vet + go test + vue-tsc
 make build       # 前端构建 + 内嵌 + 单二进制
 make docker-up   # 一键部署
-make smoke       # 端到端冒烟测试 53 项（需先 up）
-make contract    # 前后端契约校验 18 项（需先 up）
+make smoke       # 端到端冒烟测试（需先 up）
+make contract    # 前后端契约校验（需先 up）
 
 cd web && pnpm render-check   # 无头 Chrome 渲染 11 条路由，检查挂载与控制台报错
 cd web && pnpm og-cover       # 重新生成社交分享封面 public/og-cover.png
@@ -187,6 +200,30 @@ cd web && pnpm og-cover       # 重新生成社交分享封面 public/og-cover.p
 改端口：编辑 [`docker-compose.yml`](docker-compose.yml) 的 `ports` 与 `ADDR`。
 
 ---
+
+## 持续集成与发布
+
+工作流见 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)，触发于 push / PR / 手动。
+
+**为什么 CD 是发镜像而不是发 Pages**：站点是 SPA，全部数据来自 `/api/*`；
+静态托管只会得到一个没有数据的空壳页面。本项目真正自包含的产物是**镜像**
+——前端在构建期 `embed` 进二进制、数据库也在构建期烘焙，运行时只读。
+所以发布 = 构建镜像 → 冒烟 → 推送 GHCR，且**不需要任何保密凭据**（用内置 `GITHUB_TOKEN`）。
+
+| job | 触发条件 | 内容 |
+|---|---|---|
+| `go` | push / PR | `gofmt -l`（非空即失败）、`go vet ./...`、`go test ./...`（Go `1.27`） |
+| `web` | push / PR | `pnpm install --frozen-lockfile`、`type-check`、`build`；Node `22` 与 `24` 两条 LTS 线矩阵 |
+| `publish` | 仅 `main`，且 `needs: [go, web]` 全绿 | buildx 构建镜像 → **实跑容器冒烟** → 推送 `ghcr.io/elari39/sparkarchive`（`latest` / `main` / `sha-<短哈希>`） |
+
+两处设计上的取舍：
+
+- **矩阵为什么不写 `20`**：`vite@8` 与 `@vitejs/plugin-vue@6` 声明 `engines: ^20.19.0 || >=22.12.0`，
+  取两条 LTS 线即可 —— `24` 与 Dockerfile 的 `node:24-alpine` 一致（实际交付版本），`22` 是受支持的下限护栏。
+- **发布前必须先冒烟**：`go test` 用的是空的 `cmd/archive/webdist/`（仓库里只有一个 `.gitkeep`），
+  它**证明不了**前端真的被内嵌。所以 `publish` 先以 `load: true` 构建到本地、实跑容器断言
+  `/api/meta` 计数与静态资源状态码，通过后才 `push`，坏镜像不会发出去。
+
 
 ## 内容编写
 
@@ -295,6 +332,7 @@ cd web && pnpm og-cover       # 重新生成社交分享封面 public/og-cover.p
 | `pnpm og-cover` / `pnpm portrait-sheet` | 通过，输出 1200×630 封面与 15 张肖像对比图，均已人工核对无裁切 |
 | 肖像资产 | **15 张全部配图**（7 张维基共享资源公有领域 + 8 张百度百科、许可未标注）；WebP 合计约 344 KB + JPEG 约 480 KB，经 `:12026` 以长期缓存提供 |
 | 镜像 | 单二进制容器，健康检查 `healthy` |
+| GitHub Actions CI | `go` + `web`（Node 22/24 矩阵）全绿；`publish` 构建镜像并实跑容器冒烟后推送 GHCR |
 
 > **一处环境相关的注意**：在部分沙箱环境中，`smoke.ps1` 跑到后半段（肖像资产与静态资源）时
 > PowerShell 的 `Invoke-WebRequest` 会抛出「解析远程名称失败」——即对 `127.0.0.1` 的名称解析间歇性失败。
