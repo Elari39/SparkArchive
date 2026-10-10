@@ -45,7 +45,7 @@ const html = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><sty
     <h1>星火<span class="r">档案</span>馆</h1>
     <div class="en">SPARK ARCHIVE</div>
     <div class="sub">全世界无产者，联合起来！</div>
-    <div class="desc">无产阶级革命理论与实践的文献档案 —— 收录马克思、恩格斯、列宁、毛泽东、切·格瓦拉等九位革命者的生平、著作与思想。</div>
+    <div class="desc">无产阶级革命理论与实践的文献档案 —— 收录马克思、恩格斯、列宁、毛泽东、切·格瓦拉等十五位革命者的生平、著作与思想。</div>
   </header>
   <div class="strip">${figs}</div>
 </body></html>`

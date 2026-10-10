@@ -12,7 +12,7 @@ export const SITE = {
   tagline: '全世界无产者，联合起来！',
   subtitle: '无产阶级革命理论与实践的文献档案',
   description:
-    '星火档案馆收录马克思、恩格斯、列宁、毛泽东、切·格瓦拉等九位革命者的生平、著作与思想，上溯德国与俄国的理论源流，下及中国、越南与拉丁美洲的革命实践，记录国际共产主义运动的理论发展与实践历程。',
+    '星火档案馆收录马克思、恩格斯、列宁、毛泽东、切·格瓦拉等十五位革命者的生平、著作与思想，上溯德国与俄国的理论源流，下及中国、越南、古巴、布基纳法索与拉丁美洲的革命实践，记录国际共产主义运动的理论发展与实践历程。',
   footerNote: '本站内容用于学习与研究，史料均标注出处。争议性评价如实标注。',
   licenseNote: '本站原创文字采用 CC BY-NC-SA 4.0 许可；所引原著摘录版权归各自权利人所有。',
   est: 'EST. 2026',
@@ -39,19 +39,25 @@ export const SECTION_KINDS = [
 
 export type SectionKind = (typeof SECTION_KINDS)[number]['key']
 
-/** 人物筛选下拉/按钮的统一数据源（「全部」+ 9 位收录人物）。
+/** 人物筛选下拉/按钮的统一数据源（「全部」+ 15 位收录人物）。
  *  顺序与后端一致（后端按出生日期升序返回），便于列表与筛选按钮彼此对应。 */
 export const PEOPLE_FILTERS = [
   { slug: '', name: '全部' },
   { slug: 'marx', name: '马克思' },
   { slug: 'engels', name: '恩格斯' },
+  { slug: 'plekhanov', name: '普列汉诺夫' },
   { slug: 'zetkin', name: '蔡特金' },
+  { slug: 'katayama', name: '片山潜' },
   { slug: 'lenin', name: '列宁' },
   { slug: 'luxemburg', name: '卢森堡' },
-  { slug: 'dimitrov', name: '季米特洛夫' },
+  { slug: 'kollontai', name: '柯伦泰' },
+  { slug: 'li-dazhao', name: '李大钊' },
   { slug: 'ho-chi-minh', name: '胡志明' },
+  { slug: 'gramsci', name: '葛兰西' },
   { slug: 'mao', name: '毛泽东' },
+  { slug: 'castro', name: '卡斯特罗' },
   { slug: 'guevara', name: '切·格瓦拉' },
+  { slug: 'sankara', name: '桑卡拉' },
 ] as const
 
 /**

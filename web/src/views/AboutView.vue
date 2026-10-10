@@ -27,7 +27,7 @@ const RULES = [
   {
     no: '05',
     title: '肖像说明',
-    body: '本站人物肖像采用公有领域历史照片，逐张标注摄影者、年代与来源（见下方「图片来源」）。照片仅用于学习与研究，不作任何商业用途；若某张照片缺失或无法加载，页面将回退为本站绘制的构成主义矢量插画。',
+    body: '本站人物肖像取自公开的历史照片与史料图片，逐张标注来源、摄影者与许可状态（见下方「图片来源」）。其中维基共享资源来源的 7 张为公有领域史料，百度百科来源的 8 张原图未标注许可、依站点运营方的声明使用，两者许可状态不同，不作混同。照片仅用于学习与研究，不作任何商业用途；若某张照片缺失或无法加载，页面将回退为本站绘制的构成主义矢量插画。',
   },
   {
     no: '06',
@@ -64,9 +64,9 @@ const portraitList = Object.entries(PORTRAITS).map(([key, meta]) => ({ key, meta
       <div class="mt-10 border-t-3 border-ink pt-6">
         <h2 class="mb-3 font-display text-xl font-black">收录范围</h2>
         <ul class="grid gap-2 text-sm sm:grid-cols-2">
-          <li><RouterLink to="/people" class="font-bold text-red-deep hover:underline">人物</RouterLink> — 马克思、恩格斯、蔡特金、列宁、卢森堡、季米特洛夫、胡志明、毛泽东、切·格瓦拉</li>
+          <li><RouterLink to="/people" class="font-bold text-red-deep hover:underline">人物</RouterLink> — 马克思、恩格斯、普列汉诺夫、蔡特金、片山潜、列宁、卢森堡、柯伦泰、李大钊、胡志明、葛兰西、毛泽东、卡斯特罗、切·格瓦拉、桑卡拉</li>
           <li><RouterLink to="/works" class="font-bold text-red-deep hover:underline">著作</RouterLink> — 经典文献摘录与书目索引</li>
-          <li><RouterLink to="/timeline" class="font-bold text-red-deep hover:underline">年表</RouterLink> — 1848—1969 国际共运大事</li>
+          <li><RouterLink to="/timeline" class="font-bold text-red-deep hover:underline">年表</RouterLink> — 1848—2016 国际共运大事</li>
           <li><RouterLink to="/glossary" class="font-bold text-red-deep hover:underline">术语</RouterLink> — 核心概念卡与互链</li>
           <li><RouterLink to="/graph" class="font-bold text-red-deep hover:underline">关系</RouterLink> — 思想传承与国际联系</li>
           <li><RouterLink to="/search" class="font-bold text-red-deep hover:underline">检索</RouterLink> — 全文跨类检索</li>
@@ -76,7 +76,8 @@ const portraitList = Object.entries(PORTRAITS).map(([key, meta]) => ({ key, meta
       <div class="mt-10 border-t-3 border-ink pt-6">
         <h2 class="mb-3 font-display text-xl font-black">图片来源</h2>
         <p class="mb-4 text-sm leading-relaxed text-ink-soft">
-          本页人物肖像均取自公有领域历史照片（原始文件载于维基共享资源）。逐张署名如下：
+          本页列出全部 15 张人物肖像的来源与许可状态。其中 7 张取自维基共享资源，为公有领域史料；
+          另 8 张取自百度百科词条摘要图，原图未标注许可，依站点运营方的声明使用。逐张署名如下：
         </p>
         <ul class="space-y-4">
           <li v-for="p in portraitList" :key="p.key" class="border-l-[6px] border-red pl-3">

@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 import SectionHeading from '@/components/SectionHeading.vue'
 
 const MODULES = [
-  { to: '/people', no: '01', title: '人物', desc: '九位革命者的生平、简介与政治经济文化贡献' },
+  { to: '/people', no: '01', title: '人物', desc: '十五位革命者的生平、简介与政治经济文化贡献' },
   { to: '/works', no: '02', title: '著作', desc: '经典文献的原文摘录与书目索引' },
   { to: '/timeline', no: '03', title: '年表', desc: '国际共产主义运动大事年表' },
   { to: '/glossary', no: '04', title: '术语', desc: '核心概念卡与互链释义' },

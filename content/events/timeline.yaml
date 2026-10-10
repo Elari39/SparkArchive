@@ -35,6 +35,13 @@ events:
     location: 伦敦
     category: 牺牲
     people: [marx]
+  - year: 1883
+    date_text: 9月
+    title: 劳动解放社成立
+    body: 普列汉诺夫与查苏利奇等在日内瓦创立俄国第一个马克思主义团体"劳动解放社"，翻译出版《共产党宣言》等经典，为马克思主义在俄国的传播奠定基础。
+    location: 日内瓦
+    category: 组织
+    people: [plekhanov]
   - year: 1889
     date_text: 7月
     title: 第二国际成立
@@ -49,6 +56,13 @@ events:
     location: 伦敦
     category: 牺牲
     people: [engels]
+  - year: 1895
+    date_text: 年初
+    title: 《论一元论历史观之发展》出版
+    body: 普列汉诺夫论证唯物史观、批判主观社会学与"因素论"，被列宁称为培育了整整一代俄国马克思主义者。
+    location: 彼得堡
+    category: 理论
+    people: [plekhanov]
   - year: 1899
     date_text: 年中
     title: 《社会改良还是革命？》出版
@@ -56,6 +70,13 @@ events:
     location: 柏林
     category: 理论
     people: [luxemburg]
+  - year: 1901
+    date_text: 5月
+    title: 日本社会民主党成立
+    body: 片山潜与幸德秋水等发起成立日本社会民主党，宣布为社会主义与民主主义的实现而斗争，当天即被政府勒令解散。
+    location: 东京
+    category: 组织
+    people: [katayama]
   - year: 1902
     date_text: 3月
     title: 《怎么办？》出版
@@ -105,6 +126,13 @@ events:
     location: 彼得格勒
     category: 革命
     people: [lenin]
+  - year: 1918
+    date_text: 11月
+    title: 《庶民的胜利》《布尔什维主义的胜利》发表
+    body: 李大钊在北京的讲演与随后发表于《新青年》的文章中，指出第一次世界大战的胜利是全世界庶民的胜利，热烈讴歌十月革命，预言"试看将来的环球，必是赤旗的世界"。
+    location: 北京
+    category: 理论
+    people: [li-dazhao]
   - year: 1919
     date_text: 1月15日
     title: 卢森堡与李卜克内西遇害
@@ -115,10 +143,10 @@ events:
   - year: 1919
     date_text: 3月
     title: 共产国际成立
-    body: 第三国际在莫斯科成立，推动世界革命，后于1943年解散。1935年季米特洛夫当选其总书记。
+    body: 第三国际在莫斯科成立，推动世界革命，1935年召开第七次代表大会提出反法西斯统一战线的策略，后于1943年解散。
     location: 莫斯科
     category: 组织
-    people: [lenin, dimitrov]
+    people: [lenin]
   - year: 1919
     date_text: 5月4日
     title: 五四运动
@@ -126,6 +154,20 @@ events:
     location: 北京
     category: 革命
     people: [mao]
+  - year: 1919
+    date_text: 年中
+    title: 柯伦泰创建党的妇女工作部
+    body: 柯伦泰推动建立党的妇女工作部（Zhenotdel），系统组织劳动妇女参加社会生产与政治生活，这是历史上第一个由执政党设立的专门妇女工作机构。
+    location: 莫斯科
+    category: 组织
+    people: [kollontai]
+  - year: 1921
+    date_text: 1月21日
+    title: 意大利共产党成立
+    body: 意大利社会党左派在里窝那分裂，葛兰西与陶里亚蒂等共同创建意大利共产党，此后在法西斯统治下坚持地下斗争。
+    location: 里窝那
+    category: 组织
+    people: [gramsci]
   - year: 1921
     date_text: 7月
     title: 中国共产党成立
@@ -133,6 +175,13 @@ events:
     location: 上海
     category: 组织
     people: [mao]
+  - year: 1922
+    date_text: 7月
+    title: 日本共产党成立
+    body: 在共产国际指导下，片山潜等参与创建日本共产党并制定党的第一个纲领草案，日本无产阶级从此有了自己的政党。
+    location: 东京
+    category: 组织
+    people: [katayama]
   - year: 1924
     date_text: 1月21日
     title: 列宁逝世
@@ -140,6 +189,13 @@ events:
     location: 哥尔克
     category: 牺牲
     people: [lenin]
+  - year: 1927
+    date_text: 4月28日
+    title: 李大钊就义
+    body: 中国最早的马克思主义者、中国共产党主要创始人之一李大钊被奉系军阀张作霖逮捕后在北京英勇就义，年仅三十八岁。
+    location: 北京
+    category: 牺牲
+    people: [li-dazhao]
   - year: 1927
     date_text: 9月
     title: 秋收起义与井冈山道路
@@ -154,6 +210,13 @@ events:
     location: 罗萨里奥
     category: 生平
     people: [guevara]
+  - year: 1929
+    date_text: 2月
+    title: 葛兰西开始写作《狱中札记》
+    body: 被法西斯政权判刑的葛兰西在狱中获准写作，此后八年写下三十余册笔记，提出文化领导权、有机知识分子、阵地战等概念。
+    location: 图里
+    category: 理论
+    people: [gramsci]
   - year: 1930
     date_text: 2月3日
     title: 越南共产党成立
@@ -161,13 +224,6 @@ events:
     location: 中国香港
     category: 组织
     people: [ho-chi-minh]
-  - year: 1933
-    date_text: 9月21日
-    title: 莱比锡审判
-    body: 纳粹当局借国会纵火案在莱比锡开庭审讯季米特洛夫。他拒绝依赖法庭指定的辩护人，自行辩护揭露纵火案是法西斯策划的阴谋，同年12月被宣告无罪，成为世界反法西斯斗争的象征。
-    location: 莱比锡
-    category: 革命
-    people: [dimitrov]
   - year: 1934
     date_text: 10月
     title: 长征开始
@@ -178,17 +234,24 @@ events:
   - year: 1935
     date_text: 8月
     title: 共产国际第七次代表大会
-    body: 季米特洛夫作报告，论证法西斯主义是财政资本的公开恐怖专政，提出建立反法西斯统一战线，并当选共产国际执委会总书记。
+    body: 代表大会论证法西斯主义是财政资本的公开恐怖专政，提出建立反法西斯统一战线的策略，对各国共产党、尤其是中国共产党的抗日民族统一战线主张产生重要影响。
     location: 莫斯科
     category: 组织
-    people: [dimitrov]
+    people: [mao]
   - year: 1936
     date_text: 10月
     title: 国际纵队成立
-    body: 西班牙内战爆发后，在季米特洛夫倡议与组织下，来自五十四个国家的共产党员和志愿人员组成国际纵队，与西班牙人民并肩抗击法西斯。
+    body: 西班牙内战爆发后，在共产国际号召下，来自五十四个国家的共产党员和志愿人员组成国际纵队，与西班牙人民并肩抗击法西斯。
     location: 西班牙
     category: 革命
-    people: [dimitrov]
+    people: []
+  - year: 1937
+    date_text: 4月27日
+    title: 葛兰西逝世
+    body: 长期监禁使葛兰西健康严重恶化，在获有条件释放后因脑溢血在罗马逝世，年仅四十六岁；狱中手稿战后以《狱中札记》之名出版。
+    location: 罗马
+    category: 牺牲
+    people: [gramsci]
   - year: 1938
     date_text: 5月
     title: 《论持久战》发表
@@ -217,6 +280,13 @@ events:
     location: 北京
     category: 建设
     people: [mao]
+  - year: 1953
+    date_text: 7月26日
+    title: 攻打蒙卡达兵营
+    body: 卡斯特罗率一批青年攻打圣地亚哥的蒙卡达兵营，失败后被捕；同年10月他在法庭上发表《历史将宣判我无罪》的自我辩护，提出革命的纲领。
+    location: 圣地亚哥
+    category: 革命
+    people: [castro]
   - year: 1954
     date_text: 5月7日
     title: 奠边府战役胜利
@@ -234,10 +304,10 @@ events:
   - year: 1959
     date_text: 1月1日
     title: 古巴革命胜利
-    body: 巴蒂斯塔政权垮台，格瓦拉率部进入哈瓦那，古巴革命取得胜利。
+    body: 巴蒂斯塔政权垮台，卡斯特罗与格瓦拉率起义军进入哈瓦那，古巴革命取得胜利。
     location: 哈瓦那
     category: 革命
-    people: [guevara]
+    people: [castro, guevara]
   - year: 1960
     date_text: 年中
     title: 《游击战》出版
@@ -266,3 +336,31 @@ events:
     location: 河内
     category: 牺牲
     people: [ho-chi-minh]
+  - year: 1983
+    date_text: 8月4日
+    title: 布基纳法索"八四革命"
+    body: 桑卡拉发动"八四革命"夺取政权，成立全国革命委员会，提出进行一场"人民民主革命"，把"为人民服务"作为宗旨。
+    location: 瓦加杜古
+    category: 革命
+    people: [sankara]
+  - year: 1984
+    date_text: 8月4日
+    title: 上沃尔特改名为布基纳法索
+    body: 桑卡拉宣布废除殖民时代的旧国名"上沃尔特"，改称"布基纳法索"，意为"正人君子之国"，象征国家的自主与再生。
+    location: 瓦加杜古
+    category: 建设
+    people: [sankara]
+  - year: 1987
+    date_text: 10月15日
+    title: 桑卡拉身亡
+    body: 桑卡拉在军事政变中身亡，年仅三十七岁。他生前说过"革命者可以被杀害，但思想不能被杀害"，其思想此后在非洲青年中持续产生影响。
+    location: 瓦加杜古
+    category: 牺牲
+    people: [sankara]
+  - year: 2016
+    date_text: 11月25日
+    title: 卡斯特罗逝世
+    body: 古巴革命领袖菲德尔·卡斯特罗在哈瓦那逝世，享年九十岁。他领导古巴在长期封锁下坚持社会主义制度半个多世纪。
+    location: 哈瓦那
+    category: 牺牲
+    people: [castro]

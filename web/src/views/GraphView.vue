@@ -9,19 +9,43 @@ import AsyncBoundary from '@/components/AsyncBoundary.vue'
 const { data: graph, loading, error, reload } = useAsync((signal) => getGraph(signal))
 const active = ref<string | null>(null)
 
-/** 固定环形布局：人物均匀分布，保证图谱稳定可预期 */
+/** 固定环形布局：人物均匀分布，保证图谱稳定可预期。
+ *
+ *  节点为直径 80（r=40）的圆盘，内部居中排布人名，因此相邻节点圆心的弦长
+ *  必须大于直径，否则圆盘相互重叠、标签被遮住。收录到 16 人后，原固定半径
+ *  R=150 的弦长只有约 58，已明显重叠，故半径改为按人数推导：
+ *
+ *    R = max(基准半径, 不重叠所需的最小半径)
+ *
+ *  画布高度随之增长；人数不超过 9 时结果与原先完全一致（R=150、画布 720×460），
+ *  既有观感不变。 */
 const W = 720
-const H = 460
 const CX = W / 2
-const CY = H / 2
-const R = 150
+/** 基准半径与画布高（9 人时的原始取值） */
+const BASE_R = 150
+const BASE_H = 460
+/** 节点半径与相邻圆盘之间保留的间隙 */
+const NODE_R = 40
+const NODE_GAP = 6
+
+const R = computed(() => {
+  const n = graph.value?.nodes.length ?? 0
+  if (n < 2) return BASE_R
+  // 弦长 = 2R·sin(π/n)，令其 ≥ 2·NODE_R + NODE_GAP
+  const need = (NODE_R + NODE_GAP / 2) / Math.sin(Math.PI / n)
+  return Math.max(BASE_R, need)
+})
+const H = computed(() => Math.max(BASE_H, Math.ceil((R.value + NODE_R + 10) * 2)))
+const CY = computed(() => H.value / 2)
 
 const layout = computed(() => {
   const nodes = graph.value?.nodes ?? []
+  const r = R.value
+  const cy = CY.value
   const pos = new Map<string, { x: number; y: number }>()
   nodes.forEach((n, i) => {
     const a = (i / Math.max(nodes.length, 1)) * Math.PI * 2 - Math.PI / 2
-    pos.set(n.slug, { x: CX + R * Math.cos(a), y: CY + R * Math.sin(a) })
+    pos.set(n.slug, { x: CX + r * Math.cos(a), y: cy + r * Math.sin(a) })
   })
   return { nodes, pos }
 })
@@ -73,7 +97,7 @@ const activeEdges = computed(() => edges.value.filter((e) => e.from === active.v
             aria-label="人物关系图谱">
             <rect :width="W" :height="H" fill="#f2ede4" />
             <g opacity="0.06">
-              <path v-for="i in 10" :key="i" :d="`M0 ${i * 46} L${W} ${i * 46}`" stroke="#111" stroke-width="2" />
+              <path v-for="i in 14" :key="i" :d="`M0 ${i * 46} L${W} ${i * 46}`" stroke="#111" stroke-width="2" />
             </g>
 
             <!-- 连线 -->

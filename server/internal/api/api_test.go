@@ -3,12 +3,14 @@ package api
 import (
 	"encoding/json"
 	"io"
+	"io/fs"
 	"log/slog"
 	"net/http"
 	"net/http/httptest"
 	"path/filepath"
 	"strings"
 	"testing"
+	"testing/fstest"
 
 	"github.com/sparkarchive/server/internal/content"
 	"github.com/sparkarchive/server/internal/store"
@@ -19,8 +21,14 @@ func discardLogger() *slog.Logger {
 	return slog.New(slog.NewTextHandler(io.Discard, nil))
 }
 
-// newTestServer 用真实内容构建一个可用的 API 服务。
+// newTestServer 用真实内容构建一个可用的 API 服务（不注入静态资源）。
 func newTestServer(t *testing.T) http.Handler {
+	t.Helper()
+	return newTestServerWithStatic(t, nil)
+}
+
+// newTestServerWithStatic 同上，但注入一个静态资源文件系统，用于验证静态资源的服务与回退行为。
+func newTestServerWithStatic(t *testing.T, static fs.FS) http.Handler {
 	t.Helper()
 	ctx := t.Context()
 
@@ -40,7 +48,7 @@ func newTestServer(t *testing.T) http.Handler {
 	if err := st.Ingest(ctx, a); err != nil {
 		t.Fatalf("入库: %v", err)
 	}
-	return New(st, a.Site, discardLogger(), nil).Handler()
+	return New(st, a.Site, discardLogger(), static).Handler()
 }
 
 func get(t *testing.T, h http.Handler, path string) *httptest.ResponseRecorder {
@@ -226,8 +234,8 @@ func TestRelationsContract(t *testing.T) {
 
 	m := decodeMap(t, get(t, h, "/api/relations"))
 	nodes, ok := m["nodes"].([]any)
-	if !ok || len(nodes) != 9 {
-		t.Fatalf("nodes 应为 9 个，实际 %v", m["nodes"])
+	if !ok || len(nodes) != 15 {
+		t.Fatalf("nodes 应为 15 个，实际 %v", m["nodes"])
 	}
 	n0 := nodes[0].(map[string]any)
 	for _, key := range []string{"slug", "name", "epithet"} {
@@ -268,6 +276,35 @@ func TestEmptyArraysAreNotNull(t *testing.T) {
 	rec = get(t, h, "/api/events?category=nonexistent")
 	if body := rec.Body.String(); body != "[]\n" {
 		t.Errorf("空事件列表应为 []，实际: %q", body)
+	}
+}
+
+// TestStaticAssetFallbackBehavior 锁定静态资源的两条行为边界：
+//   - /assets/ 下不存在的资源必须 404，不得回退成 index.html，
+//     否则请求方会拿到 200 + text/html 却按 image/* 解码（排查资源缺失时极易被误导）；
+//   - 其余未知路径仍应回退到 index.html，保证客户端路由可直接访问。
+func TestStaticAssetFallbackBehavior(t *testing.T) {
+	t.Parallel()
+
+	static := fstest.MapFS{
+		"index.html":    &fstest.MapFile{Data: []byte("<!doctype html><div id=\"app\"></div>")},
+		"assets/app.js": &fstest.MapFile{Data: []byte("console.log(1)")},
+	}
+	h := newTestServerWithStatic(t, static)
+
+	rec := get(t, h, "/assets/app.js")
+	if rec.Code != http.StatusOK {
+		t.Errorf("存在的静态资源应 200，实际 %d", rec.Code)
+	}
+
+	rec = get(t, h, "/assets/portraits/missing.jpg")
+	if rec.Code != http.StatusNotFound {
+		t.Errorf("缺失的 /assets/ 资源应 404，实际 %d（body=%q）", rec.Code, rec.Body.String())
+	}
+
+	rec = get(t, h, "/people/missing-person")
+	if rec.Code != http.StatusOK || !strings.Contains(rec.Body.String(), `id="app"`) {
+		t.Errorf("未知客户端路由应回退到 index.html，实际 %d", rec.Code)
 	}
 }
 

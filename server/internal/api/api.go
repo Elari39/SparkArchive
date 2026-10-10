@@ -181,7 +181,14 @@ func (s *Server) handleStatic(w http.ResponseWriter, r *http.Request) {
 	}
 	data, err := fs.ReadFile(s.static, name)
 	if err != nil {
-		// 未命中的路径交给 SPA 路由处理
+		// assets/ 下是构建期产物（文件名带内容哈希），不存在就是真的不存在。
+		// 若这里也回退到 index.html，请求方会拿到 200 + text/html 却按
+		// image/*、application/javascript 去解码，排查资源缺失时极易被误导。
+		if strings.HasPrefix(name, "assets/") {
+			http.NotFound(w, r)
+			return
+		}
+		// 其余未命中的路径交给 SPA 路由处理
 		data, err = fs.ReadFile(s.static, "index.html")
 		if err != nil {
 			http.NotFound(w, r)

@@ -232,7 +232,7 @@ func TestPersonDetail(t *testing.T) {
 	st := newTestStore(t)
 	ctx := t.Context()
 
-	for _, slug := range []string{"marx", "engels", "zetkin", "lenin", "luxemburg", "dimitrov", "ho-chi-minh", "mao", "guevara"} {
+	for _, slug := range []string{"marx", "engels", "plekhanov", "zetkin", "katayama", "lenin", "luxemburg", "kollontai", "li-dazhao", "ho-chi-minh", "gramsci", "mao", "castro", "guevara", "sankara"} {
 		p, err := st.Person(ctx, slug)
 		if err != nil {
 			t.Fatalf("查询人物 %s: %v", slug, err)

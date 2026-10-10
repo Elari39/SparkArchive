@@ -290,30 +290,6 @@ works:
     excerpts:
       - text: 如果没有妇女参加，无产阶级就不能将自己的经济斗争和政治斗争进行到底。
         note: 报告中对妇女参加阶级斗争必要性的论断。
-  - slug: dimitrov-leipzig-speech
-    person: dimitrov
-    title: 莱比锡审判上的最后发言
-    year: 1933
-    category: 政论
-    summary: 在纳粹法庭上自行辩护，用事实揭露国会纵火案是法西斯精心策划的阴谋，成为反法西斯斗争的经典文献。
-    source: 格奥尔基·季米特洛夫在莱比锡法庭上的发言
-    source_url: https://www.marxists.org/chinese/dimitrov/index.htm
-    excerpts:
-      - text: 历史的车轮在转动……它现在和将来都在转动，直到共产主义的彻底胜利！
-        note: 法庭上反驳纳粹指控时的结束语。
-  - slug: dimitrov-fascism-report
-    person: dimitrov
-    title: 法西斯的进攻与共产国际的任务
-    year: 1935
-    category: 政治理论
-    summary: 在共产国际第七次代表大会上的报告，系统论证法西斯主义的阶级本质，提出建立反法西斯统一战线的策略。
-    source: 格奥尔基·季米特洛夫在共产国际第七次代表大会上的报告
-    source_url: https://www.marxists.org/chinese/dimitrov/index.htm
-    excerpts:
-      - text: 法西斯主义是最反动、最主张民族沙文主义、最抱帝国主义野心的财政资本的公开的恐怖专政。
-        note: 报告中对法西斯主义本质的界定。
-      - text: 任何呆板的公式都是我们的死敌。
-        note: 论各国党必须根据本国具体情况决定策略。
   - slug: prison-diary
     person: ho-chi-minh
     title: 狱中日记
@@ -340,3 +316,121 @@ works:
         note: 开篇引美国《独立宣言》，并推及全世界各民族生来平等。
       - text: 越南享有自由和独立的权利，而且事实上已经成了一个自由和独立的国家。
         note: 宣言结论部分，向全世界宣告越南独立。
+  - slug: monist-view-of-history
+    person: plekhanov
+    title: 论一元论历史观之发展
+    year: 1895
+    category: 哲学
+    summary: 论证辩证唯物主义与历史唯物主义，批判主观社会学与把社会诸因素并列起来的"因素论"。
+    source: 普列汉诺夫《论一元论历史观之发展》
+    source_url: https://www.marxists.org/chinese/plekhanov/index.htm
+    excerpts:
+      - text: 只有当"群氓"本身成为历史行动的英雄，并在这个粗野的"群氓"中发展着与此相适应的自觉的时候，理性的王国才开始大踏步地走近我们。
+        note: 批判英雄史观、论证人民群众是历史创造者的著名段落，引自《普列汉诺夫哲学著作选集》。
+      - text: 唯物主义并不否认个人在历史上的作用，但个人的作用只有在社会关系所容许的时候、地方和程度上，才能成为社会发展的因素。
+        note: 论个人作用与社会条件的辩证关系。
+  - slug: my-socialism
+    person: katayama
+    title: 我的社会主义
+    year: 1903
+    category: 理论
+    summary: 与幸德秋水《社会主义神髓》等并称明治时期社会主义三大名著，论证社会主义取代资本主义的历史必然。
+    source: 片山潜《我的社会主义》，转引自《片山潜小传》
+    source_url: https://www.marxists.org/chinese/sen-katayama/index.htm
+    excerpts:
+      - text: 马克思及恩格斯等，在资本主义制度之下，于产业发达之间看出暗中社会主义之发达，进而通观资本家经济之发达为国际的，因而确信所期社会主义之实行，也非国际的不可，故彼等乃专尽力于国际社会主义运动。
+        note: 论证马克思主义与国际主义不可分割，是理解片山潜国际主义思想的起点。
+  - slug: katayama-far-east-congress
+    person: katayama
+    title: 在远东劳动者代表大会上的讲话
+    year: 1922
+    category: 政论
+    summary: 在莫斯科召开的远东劳动者代表大会上强调日本无产阶级对中国革命的国际主义义务。
+    source: 片山潜在远东劳动者代表大会上的讲话（1922年）
+    source_url: https://www.marxists.org/chinese/sen-katayama/index.htm
+    excerpts:
+      - text: 支持中国的解放斗争，是日本工人的无产阶级国际义务。
+        note: 论日本无产阶级的国际主义义务。
+  - slug: victory-of-bolshevism
+    person: li-dazhao
+    title: 布尔什维主义的胜利
+    year: 1918
+    category: 政论
+    summary: 讴歌十月革命，把社会主义与布尔什维主义列为真正的胜利者，预言社会主义将在全世界胜利。
+    source: 李大钊《布尔什维主义的胜利》，《新青年》第五卷第五号
+    source_url: https://www.marxists.org/chinese/lidazhao/index.htm
+    excerpts:
+      - text: 人道的警钟响了！自由的曙光现了！试看将来的环球，必是赤旗的世界！
+        note: 全文结语，中国近现代史上最著名的预言之一。
+  - slug: victory-of-common-people
+    person: li-dazhao
+    title: 庶民的胜利
+    year: 1918
+    category: 政论
+    summary: 在天安门的讲演，指出第一次世界大战的胜利是全世界庶民的胜利，而不是武力与资本家的胜利。
+    source: 李大钊《庶民的胜利》，《新青年》第五卷第五号
+    source_url: https://www.marxists.org/chinese/lidazhao/index.htm
+    excerpts:
+      - text: 这回战胜的，不是联合国的武力，是世界人类的新精神。不是哪一国的军阀或资本家的政府，是全世界的庶民。
+        note: 对第一次世界大战结局的独特判断，把希望寄托于人民群众。
+  - slug: prison-notebooks
+    person: gramsci
+    title: 狱中札记
+    year: 1929
+    category: 政治理论
+    summary: 狱中写下的三十余册笔记，提出文化领导权、有机知识分子、阵地战等原创概念，战后整理出版。
+    source: 葛兰西《狱中札记》
+    source_url: https://www.marxists.org/chinese/gramsci/index.htm
+    excerpts:
+      - text: 危机的实质恰恰在于：旧的东西正在死去，而新的东西还不能诞生；在这个空位期中，出现了各种各样的病态现象。
+        note: 论危机时期的社会特征，是《狱中札记》中被引用最广的段落之一。
+      - text: 人人都是知识分子，但并非所有人在社会中都履行知识分子的职能。
+        note: 论知识分子的界定，反驳把知识分子视为超然于阶级之上的特殊群体的观点。
+  - slug: communism-and-the-family
+    person: kollontai
+    title: 共产主义与家庭
+    year: 1920
+    category: 妇女运动
+    summary: 系统论述家务劳动社会化与家庭作为经济单位的消亡，是柯伦泰在妇女问题上的代表作。
+    source: 亚历山德拉·柯伦泰《共产主义与家庭》（1920年）
+    source_url: https://www.marxists.org/chinese/alexandra-kollontai/index.htm
+    excerpts:
+      - text: 随着共产主义的胜利，四类家务劳动注定要消亡。
+        note: 四类家务指烹饪、洗涤、缝补与育儿，主张把它们转移给公共机构。
+      - text: 国家不需要家庭，因为家庭经济不再有利可图：家庭分散了工人对更有用的生产性劳动的注意力。
+        note: 论家庭作为经济单位的功能正在消失。
+  - slug: history-will-absolve-me
+    person: castro
+    title: 历史将宣判我无罪
+    year: 1953
+    category: 政论
+    summary: 因攻打蒙卡达兵营受审时在法庭上的自我辩护，控诉独裁政权并系统提出革命的纲领。
+    source: 菲德尔·卡斯特罗在圣地亚哥法庭上的自我辩护（1953年10月16日）
+    source_url: https://www.marxists.org/chinese/index.htm
+    excerpts:
+      - text: 判处我吧，这无关紧要；历史将宣判我无罪。
+        note: 辩护词的结语，后成为古巴革命最著名的经典表述。
+  - slug: heirs-of-world-revolutions
+    person: sankara
+    title: 我们是世界革命的继承人
+    year: 1983
+    category: 政论
+    summary: 桑卡拉阐述布基纳法索革命的国际主义立场，主张把世界革命的经验与本国条件相结合。
+    source: 托马斯·桑卡拉《我们是世界革命的继承人》（1983年）
+    source_url: https://www.marxists.org/chinese/index.htm
+    excerpts:
+      - text: 我们要敢于创造未来。
+        note: 论根本性变革需要打破旧公式、不循规蹈矩的勇气。
+  - slug: womens-liberation-africa
+    person: sankara
+    title: 妇女解放和非洲自由的斗争
+    year: 1987
+    category: 妇女运动
+    summary: 收录桑卡拉关于妇女解放的两次演说，论证没有妇女的解放就没有真正的社会革命。
+    source: 托马斯·桑卡拉《妇女解放和非洲自由的斗争》
+    source_url: https://www.marxists.org/chinese/index.htm
+    excerpts:
+      - text: 没有妇女的解放，就没有真正的社会革命。
+        note: 1987年国际妇女节演说的核心论断。
+      - text: 革命和妇女解放是一体的……女性撑起了天空的另一半。
+        note: 论妇女解放与革命的内在统一。

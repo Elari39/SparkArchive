@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>名单增补：候选人物研究 · 星火档案馆</title>
+<meta name="description" content="以托马斯·桑卡拉为范例，说明星火档案馆收录代表性人物的筛选标准与依据，并列出 12 位可纳入的候选人。" />
+<style>
+  /* ============================================================
+     星火档案馆 · 策展备忘
+     沿用站点既有设计语言：构成主义 × 新粗野主义
+     令牌取自 web/src/styles/theme.css，规则：无渐变、无柔和阴影、圆角 ≤ 4px
+     本件为"档案纸张"概念，与站点一致，判定为单主题（纸白底），非疏漏。
+     ============================================================ */
+  :root {
+    --paper: #f2ede4;
+    --paper-dim: #e3dbcd;
+    --ink: #111111;
+    --ink-soft: #1f1f1f;
+    --steel: #4a4a4a;
+    --steel-light: #7a7a7a;
+    --red: #d62828;
+    --red-deep: #a4161a;
+    --brass: #f4b400;
+
+    --font-display: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+    --font-body: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, 'Courier New', monospace;
+
+    --border: 3px solid var(--ink);
+    --shadow: 6px 6px 0 var(--ink);
+    --shadow-sm: 3px 3px 0 var(--ink);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { background: var(--paper); -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.75;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p { margin: 0; }
+  a { color: var(--red-deep); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+  ::selection { background: var(--red); color: var(--paper); }
+
+  .wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 36px); }
+
+  .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+  /* ------------------------------------------------------------
+     门楣
+     ------------------------------------------------------------ */
+  .masthead { border-bottom: var(--border); background: var(--paper); }
+  .masthead__hatch {
+    height: 12px;
+    background-image: repeating-linear-gradient(45deg, var(--red) 0, var(--red) 3px, transparent 3px, transparent 11px);
+    border-bottom: var(--border);
+  }
+  .masthead__inner { padding-block: clamp(28px, 5vw, 52px) clamp(22px, 4vw, 36px); }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red-deep);
+  }
+  .masthead h1 {
+    font-size: clamp(2.1rem, 6.4vw, 4.4rem);
+    line-height: 0.98;
+    margin-top: 0.45rem;
+  }
+  .masthead h1 .accent { color: var(--red); }
+  .lede {
+    max-width: 62ch;
+    margin-top: 1rem;
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+
+  .stamprow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.35rem; list-style: none; padding: 0; }
+  .stamp {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    padding: 0.16rem 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.71rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .stamp--red { background: var(--red); color: var(--paper); }
+  .stamp--ink { background: var(--ink); color: var(--paper); }
+  .stamp--brass { background: var(--brass); color: var(--ink); }
+
+  /* ------------------------------------------------------------
+     目录（就地锚点）
+     ------------------------------------------------------------ */
+  .toc { border-bottom: var(--border); background: var(--paper-dim); }
+  .toc ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 0 clamp(14px, 3vw, 34px);
+    padding-block: 0.7rem;
+  }
+  .toc a {
+    display: inline-flex; align-items: baseline; gap: 0.5rem;
+    color: var(--ink); text-decoration: none;
+    font-weight: 800; font-size: 0.86rem; letter-spacing: 0.01em;
+    padding-block: 0.15rem;
+  }
+  .toc a:hover { color: var(--red-deep); }
+  .toc a .n { font-family: var(--font-mono); font-size: 0.72rem; color: var(--red-deep); font-weight: 700; }
+
+  /* ------------------------------------------------------------
+     区块
+     ------------------------------------------------------------ */
+  main { padding-block: clamp(34px, 6vw, 68px); }
+  .block + .block { margin-top: clamp(42px, 7vw, 82px); }
+
+  .block__head { display: flex; align-items: baseline; gap: 0.85rem; border-bottom: var(--border); padding-bottom: 0.55rem; }
+  .block__no {
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.95rem;
+    background: var(--ink); color: var(--paper); padding: 0.12rem 0.5rem; letter-spacing: 0.04em;
+  }
+  .block__head h2 { font-size: clamp(1.5rem, 3.6vw, 2.25rem); }
+  .block__sub { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); }
+  .block__intro { margin-top: 1.1rem; max-width: 74ch; color: var(--ink-soft); }
+
+  /* ------------------------------------------------------------
+     标准卡（六条）
+     ------------------------------------------------------------ */
+  .criteria { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); margin-top: 1.6rem; }
+  .criterion { border: var(--border); background: var(--paper); box-shadow: var(--shadow-sm); padding: 1.05rem 1.15rem 1.2rem; }
+  .criterion__top { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.55rem; }
+  .criterion__no {
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.9rem;
+    border: 2px solid var(--ink); background: var(--brass); color: var(--ink);
+    padding: 0.05rem 0.42rem;
+  }
+  .criterion h3 { font-size: 1.06rem; font-weight: 900; }
+  .criterion p { font-size: 0.93rem; color: var(--steel); }
+
+  .basis {
+    margin-top: 1.5rem; border: var(--border); border-left-width: 12px; border-left-color: var(--red);
+    background: var(--paper-dim); padding: 0.95rem 1.15rem; font-size: 0.92rem; color: var(--ink-soft);
+  }
+  .basis strong { font-weight: 800; }
+
+  /* ------------------------------------------------------------
+     范例（桑卡拉）
+     ------------------------------------------------------------ */
+  .exhibit { display: grid; gap: 20px; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); margin-top: 1.6rem; }
+  @media (max-width: 820px) { .exhibit { grid-template-columns: 1fr; } }
+
+  .exhibit__prose { border: var(--border); background: var(--paper); box-shadow: var(--shadow); padding: clamp(1.1rem, 2.5vw, 1.6rem); }
+  .exhibit__prose h3 { font-size: 1.3rem; margin-bottom: 0.7rem; }
+  .exhibit__prose p + p { margin-top: 0.85rem; }
+  .exhibit__prose .hl { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--brass) 72%, transparent) 62%); font-weight: 800; }
+
+  .profile { border: var(--border); background: var(--ink); color: var(--paper); box-shadow: var(--shadow); padding: 1.2rem 1.25rem; }
+  .profile h3 { font-size: 1.25rem; color: var(--paper); }
+  .profile .latin { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; color: var(--brass); margin-top: 0.2rem; }
+  .profile dl { margin: 1rem 0 0; display: grid; grid-template-columns: auto 1fr; gap: 0.42rem 0.9rem; }
+  .profile dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--brass); padding-top: 0.22rem; }
+  .profile dd { margin: 0; font-size: 0.9rem; color: #eae3d8; }
+  .profile .tagline { margin-top: 1rem; border-top: 2px solid var(--red); padding-top: 0.7rem; font-size: 0.88rem; color: #d9d1c4; }
+
+  .ledger { margin-top: 1.5rem; border: var(--border); background: var(--paper); box-shadow: var(--shadow-sm); overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 0.9rem; }
+  caption { text-align: left; padding: 0.85rem 1rem 0; font-family: var(--font-display); font-weight: 900; font-size: 1.02rem; }
+  th, td { padding: 0.72rem 0.9rem; text-align: left; vertical-align: top; border-top: 2px solid var(--ink); }
+  thead th { background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; border-top: none; }
+  tbody th { font-family: var(--font-mono); font-weight: 700; font-size: 0.82rem; white-space: nowrap; background: var(--paper-dim); }
+  td .pass { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-weight: 700; font-size: 0.74rem; white-space: nowrap; }
+  td .pass::before { content: "✓"; color: var(--red-deep); font-weight: 900; }
+  td .pass--note::after { content: ""; }
+  tr:nth-child(even) td { background: color-mix(in srgb, var(--paper-dim) 45%, var(--paper)); }
+
+  .pullquotes { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 1.4rem; }
+  .pullquote { border-left: 8px solid var(--red); background: var(--paper-dim); padding: 0.85rem 1.05rem; }
+  .pullquote p { font-family: var(--font-display); font-weight: 900; font-size: 1.02rem; line-height: 1.4; }
+  .pullquote cite { display: block; margin-top: 0.5rem; font-family: var(--font-mono); font-style: normal; font-size: 0.7rem; letter-spacing: 0.06em; color: var(--steel); }
+
+  /* ------------------------------------------------------------
+     候选人卡
+     ------------------------------------------------------------ */
+  .roster { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); margin-top: 1.7rem; }
+  .cand { border: var(--border); background: var(--paper); box-shadow: var(--shadow-sm); padding: 1.05rem 1.15rem 1.15rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .cand--host { box-shadow: var(--shadow); border-left-width: 12px; border-left-color: var(--red); }
+
+  .cand__head { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .cand__plate {
+    flex: 0 0 auto; width: 46px; height: 46px; border: 2px solid var(--ink);
+    background: var(--paper-dim); display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 900; font-size: 1.3rem; color: var(--red-deep);
+  }
+  .cand__id { min-width: 0; }
+  .cand__year { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: var(--red-deep); }
+  .cand__name { font-size: 1.18rem; }
+  .cand__latin { font-family: var(--font-mono); font-size: 0.7rem; color: var(--steel); letter-spacing: 0.02em; }
+  .cand__no { margin-left: auto; font-family: var(--font-mono); font-weight: 700; font-size: 1.15rem; color: var(--steel-light); }
+
+  .cand__epithet { font-size: 0.9rem; font-weight: 700; color: var(--ink-soft); border-left: 4px solid var(--brass); padding-left: 0.6rem; }
+  .cand__tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .cand__tags .stamp { font-size: 0.66rem; padding: 0.1rem 0.45rem; }
+
+  .cand__block h4 {
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-deep); margin-bottom: 0.25rem;
+  }
+  .cand__block p { font-size: 0.9rem; color: var(--ink-soft); }
+  .cand__block ul { margin: 0; padding-left: 1.05rem; list-style: square; }
+  .cand__block li { font-size: 0.87rem; color: var(--steel); margin: 0.22rem 0; }
+  .cand__link { margin-top: auto; padding-top: 0.6rem; border-top: 2px solid var(--ink); font-size: 0.82rem; color: var(--steel); }
+  .cand__link b { font-family: var(--font-mono); font-style: normal; letter-spacing: 0.06em; font-size: 0.7rem; text-transform: uppercase; color: var(--red-deep); }
+  .cand__link span { font-weight: 700; color: var(--ink); }
+
+  /* ------------------------------------------------------------
+     边界：暂缓 / 备选
+     ------------------------------------------------------------ */
+  .edges { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 1.6rem; }
+  .edge { border: var(--border); background: var(--paper); padding: 1.05rem 1.15rem; box-shadow: var(--shadow-sm); }
+  .edge--hold { border-left-width: 12px; border-left-color: var(--steel); }
+  .edge--bench { border-left-width: 12px; border-left-color: var(--brass); }
+  .edge h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
+  .edge ul { margin: 0; padding-left: 1.1rem; list-style: square; }
+  .edge li { font-size: 0.89rem; color: var(--steel); margin: 0.4rem 0; }
+  .edge li b { color: var(--ink); font-weight: 800; }
+
+  /* ------------------------------------------------------------
+     落地清单
+     ------------------------------------------------------------ */
+  .checklist { list-style: none; counter-reset: step; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 12px; }
+  .checklist li {
+    counter-increment: step; position: relative;
+    border: var(--border); background: var(--paper); box-shadow: var(--shadow-sm);
+    padding: 0.85rem 1.1rem 0.9rem 3.6rem; font-size: 0.92rem; color: var(--ink-soft);
+  }
+  .checklist li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute; left: 0; top: 0; bottom: 0; width: 2.7rem;
+    display: grid; place-items: center;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--font-mono); font-weight: 700; font-size: 0.86rem;
+    border-right: var(--border);
+  }
+  .checklist code {
+    font-family: var(--font-mono); font-size: 0.82em;
+    background: var(--ink); color: var(--paper); padding: 0.06rem 0.34rem;
+  }
+
+  /* ------------------------------------------------------------
+     尾注
+     ------------------------------------------------------------ */
+  .closing { margin-top: clamp(46px, 7vw, 84px); border-top: var(--border); padding-top: clamp(24px, 4vw, 40px); }
+  .closing blockquote {
+    margin: 0; border-left: 12px solid var(--red); background: var(--ink); color: var(--paper);
+    padding: clamp(1.2rem, 3vw, 1.9rem); box-shadow: var(--shadow);
+    font-family: var(--font-display); font-weight: 900; font-size: clamp(1.3rem, 3.4vw, 2rem); line-height: 1.2;
+  }
+  .footnote { margin-top: 1.6rem; font-size: 0.82rem; color: var(--steel); max-width: 78ch; }
+  .footnote p + p { margin-top: 0.5rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__hatch" aria-hidden="true"></div>
+  <div class="wrap masthead__inner">
+    <p class="kicker">SPARK ARCHIVE · 策展备忘 / CURATORIAL MEMO · 2026-10-09 提案快照</p>
+    <h1>名单增补：<br /><span class="accent">候选人物研究</span></h1>
+    <p class="lede">
+      本文写作时（2026 年 10 月），星火档案馆收录九位革命者。本件回答一个策展问题：名单还可以、也应该补进哪些代表性人物？
+      下文先确立<b>筛选标准与依据</b>，再以<b>托马斯·桑卡拉</b>为范例逐条演示该标准如何运作，
+      最后给出<b>十二位候选人</b>及其入选理由与代表性贡献。
+    </p>
+    <ul class="stamprow">
+      <li class="stamp stamp--ink">写作时现存人物 9 位</li>
+      <li class="stamp stamp--red">建议增补 12 位</li>
+      <li class="stamp stamp--brass">后续：已采纳其中 7 位</li>
+      <li class="stamp">排序：出生年升序</li>
+      <li class="stamp">体例：政治 / 经济 / 文化 / 思想</li>
+    </ul>
+  </div>
+</header>
+
+<nav class="toc" aria-label="本件目录">
+  <div class="wrap">
+    <ul>
+      <li><a href="#criteria"><span class="n">01</span>筛选标准与依据</a></li>
+      <li><a href="#exhibit"><span class="n">02</span>范例：桑卡拉</a></li>
+      <li><a href="#roster"><span class="n">03</span>候选人名单（12 人）</a></li>
+      <li><a href="#edges"><span class="n">04</span>边界：暂缓与备选</a></li>
+      <li><a href="#playbook"><span class="n">05</span>若采纳入馆</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+
+    <!-- ================= 01 标准 ================= -->
+    <section class="block" id="criteria" aria-labelledby="criteria-h">
+      <div class="block__head">
+        <span class="block__no">01</span>
+        <h2 id="criteria-h">筛选标准与依据</h2>
+        <span class="block__sub">Criteria</span>
+      </div>
+      <p class="block__intro">
+        本馆不是一份"伟人名录"，而是一张<b>可互相印证、可彼此挂接的关系网络</b>——关系图以"边"描述思想传承与国际联系，
+        入库时强制校验两端人物必须存在。因此收录标准既有主题性的门槛，也有结构性的门槛：一个人物不仅自身要够格，
+        还要能在这张网里找到真实的位置。以下六条，前四条是<b>准入</b>，后两条是<b>择优</b>。
+      </p>
+
+      <div class="criteria">
+        <article class="criterion">
+          <div class="criterion__top"><span class="criterion__no">01</span><h3>主题相关性</h3></div>
+          <p>须处于国际共产主义运动、无产阶级革命或民族解放运动的理论源流与实践谱系之内。与主题无直接思想或实践关联者，无论声望多高，一律不收。</p>
+        </article>
+        <article class="criterion">
+          <div class="criterion__top"><span class="criterion__no">02</span><h3>代表贡献</h3></div>
+          <p>须在政治、经济、文化、思想四域中至少一域，有可辨识、可论证的代表性贡献，并能对应本馆"四域贡献 + 思想体系"的固定体例。仅有象征意义而无可考贡献者，不足以立档。</p>
+        </article>
+        <article class="criterion">
+          <div class="criterion__top"><span class="criterion__no">03</span><h3>文本可考</h3></div>
+          <p>须留有可核的著作或文献，可进入"著作原文库"，并附书目索引与外部阅读链接。这是硬性约束——每位人物至少一部著作，构建期的测试会强制校验。</p>
+        </article>
+        <article class="criterion">
+          <div class="criterion__top"><span class="criterion__no">04</span><h3>谱系可挂接</h3></div>
+          <p>须能与馆内已有节点建立真实的思想传承、合作或论战关系，至少一条实边可落。<b>孤立条目无法成网</b>，也就失去了档案馆的意义。</p>
+        </article>
+        <article class="criterion">
+          <div class="criterion__top"><span class="criterion__no">05</span><h3>结构补位</h3></div>
+          <p>同等条件下，优先纳入能填补现有空白者——地域（非洲、拉美本土理论、共产国际亚洲）、性别（女性理论家）、代际（列宁之前的源流、1980 年代新生代）或理论维度（西方马克思主义、生态与妇女议题）。</p>
+        </article>
+        <article class="criterion">
+          <div class="criterion__top"><span class="criterion__no">06</span><h3>史料与肖像</h3></div>
+          <p>史实、时间、引文须可核并尽量标注出处；历史评价存在分歧者，须能如实设立"争议与评价"专节（含对失误与错误的记载）。肖像须为公有领域历史照片，以符合本馆视觉体例。</p>
+        </article>
+      </div>
+
+      <p class="basis">
+        <strong>依据来源：</strong>本馆《凡例》的"内容体例 / 史料来源 / 争议标注规则 / 肖像说明"四条，
+        以及仓库《内容编写》一节的硬约束——新人物须补齐五个固定章节、至少一部著作、
+        <span class="mono">birth</span> 字段完整（排序依据）、并保证关系、著作、术语、事件的引用完整性通过构建期校验。
+      </p>
+    </section>
+
+    <!-- ================= 02 范例 ================= -->
+    <section class="block" id="exhibit" aria-labelledby="exhibit-h">
+      <div class="block__head">
+        <span class="block__no">02</span>
+        <h2 id="exhibit-h">范例：桑卡拉如何通过六项</h2>
+        <span class="block__sub">Exhibit A</span>
+      </div>
+
+      <div class="exhibit">
+        <div class="exhibit__prose">
+          <h3>为什么用桑卡拉做范例</h3>
+          <p>
+            托马斯·桑卡拉（1949—1987）是"筛选标准"的一次近似满分的演示。他既是本馆现有两个重要板块之间的<b>天然接口</b>——
+            一端是切·格瓦拉所代表的国际主义与游击实践，另一端是长期缺席的<b>非洲解放谱系</b>——又同时在地域、代际、议题三个维度上补白。
+          </p>
+          <p>
+            更关键的是，他并非"完人式的符号"：1983 年"八四革命"后他推行土地改革、拒绝外债、发起妇女解放与扫盲、构想横贯非洲的"绿色长城"，
+            同时也以铁腕治国、压制工会与新闻自由、镇压异见，最终在 1987 年的政变中身亡。
+            <span class="hl">这种"贡献与争议并存"恰恰符合本馆"歌颂性基调 + 史实可核"的写法</span>——
+            他可以在同一张档案卡片里，既有四域贡献，也有一个如实写下的"争议与评价"专节。
+          </p>
+        </div>
+
+        <aside class="profile" aria-label="桑卡拉档案摘要">
+          <h3>托马斯·伊西多尔·诺埃尔·桑卡拉</h3>
+          <p class="latin">Thomas Sankara · 1949–1987</p>
+          <dl>
+            <dt>生卒</dt><dd>1949.12.21 — 1987.10.15</dd>
+            <dt>国别</dt><dd>布基纳法索（原"上沃尔特"）</dd>
+            <dt>定位</dt><dd>马克思主义革命家、泛非主义理论家，布基纳法索首任总统</dd>
+            <dt>著作</dt><dd>《论布基纳法索革命》《我们是世界革命的继承人》《妇女解放与非洲自由的斗争》</dd>
+            <dt>称谓</dt><dd>被称"非洲的切·格瓦拉"；2023 年被该国政府宣布为"国家英雄"</dd>
+          </dl>
+          <p class="tagline">"革命者可以被杀害，但思想不能被杀害。"</p>
+        </aside>
+      </div>
+
+      <div class="ledger">
+        <table>
+          <caption>六项标准 → 桑卡拉的对应事实 → 判定</caption>
+          <thead>
+            <tr><th scope="col">标准</th><th scope="col">史实依据</th><th scope="col">判定</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">01 主题相关性</th>
+              <td>1983 年"八四革命"的领导者，以反帝、反新殖民为目标，自称"世界革命的继承人"，公开援引十月革命与巴黎公社。</td>
+              <td><span class="pass">通过</span></td>
+            </tr>
+            <tr>
+              <th scope="row">02 代表贡献</th>
+              <td>政治：推翻旧政权、改国名为"布基纳法索"、"为人民服务"为座右铭。经济：土地改革、拒偿外债、粮食自给、提高农产品收购价。文化：全国扫盲、为 250 万儿童免费接种、植树造林"绿色长城"。思想：人民民主革命与泛非主义。</td>
+              <td><span class="pass">通过（四域齐备）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">03 文本可考</th>
+              <td>三部可考文集／演说集（见右栏），可进入著作库并挂外部阅读链接。</td>
+              <td><span class="pass">通过</span></td>
+            </tr>
+            <tr>
+              <th scope="row">04 谱系可挂接</th>
+              <td>可与格瓦拉（国际主义）、卡斯特罗（他公开推崇古巴革命）、恩克鲁玛（泛非前辈）、卡布拉尔（非洲解放理论）、列宁（帝国主义论）建边。</td>
+              <td><span class="pass">通过（≥3 条实边）</span></td>
+            </tr>
+            <tr>
+              <th scope="row">05 结构补位</th>
+              <td>一次补齐四重空白：非洲萨赫勒地域、1980 年代代际、泛非主义维度、生态与妇女的交叉议题。</td>
+              <td><span class="pass">通过</span></td>
+            </tr>
+            <tr>
+              <th scope="row">06 史料与肖像</th>
+              <td>生平脉络清晰；评价有分歧（铁腕治理、禁止工会与新闻自由、镇压异见、经济政策争议），正可如实设"争议与评价"专节；存有公有领域照片。</td>
+              <td><span class="pass">通过</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pullquotes">
+        <blockquote class="pullquote">
+          <p>"他们喂养你，就会控制你。"</p>
+          <cite>论外债与附带条件的援助</cite>
+        </blockquote>
+        <blockquote class="pullquote">
+          <p>"没有妇女的解放，就没有真正的社会革命。"</p>
+          <cite>1987 年国际妇女节演说</cite>
+        </blockquote>
+        <blockquote class="pullquote">
+          <p>"我们要敢于创造未来。"</p>
+          <cite>1985 年访谈</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ================= 03 名单 ================= -->
+    <section class="block" id="roster" aria-labelledby="roster-h">
+      <div class="block__head">
+        <span class="block__no">03</span>
+        <h2 id="roster-h">候选人名单（12 人）</h2>
+        <span class="block__sub">按出生年升序 · 与馆内排序规则一致</span>
+      </div>
+      <p class="block__intro">
+        十二人覆盖四个板块：<b>欧洲理论谱系</b>（补源流与西方马克思主义）、<b>拉美</b>（补本土理论与游击前史）、
+        <b>非洲</b>（补反帝、新殖民主义与民族解放）、<b>亚洲</b>（补共产国际与中国建党一代）。
+        排序沿用馆内规则——按 <span class="mono">birth</span> 升序，故与人物列表、关系图环形布局一致。
+      </p>
+
+      <div class="roster">
+
+        <!-- 01 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">普</span>
+            <div class="cand__id">
+              <p class="cand__year">1856</p>
+              <h3 class="cand__name">格奥尔基·普列汉诺夫</h3>
+              <p class="cand__latin">Georgi Plekhanov · 1856–1918</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">01</span>
+          </header>
+          <p class="cand__epithet">俄国马克思主义的奠基人</p>
+          <ul class="cand__tags"><li class="stamp">俄国</li><li class="stamp">理论</li><li class="stamp">源流</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>为馆内补上"列宁之前的俄国源流"这一代际缺环——列宁早年的许多论战对象正是他，收他，列宁这一条线才有前史。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>创建俄国第一个马克思主义团体"劳动解放社"（1883）。</li>
+              <li>《论一元论历史观之发展》（1895）系统论证唯物史观。</li>
+              <li>晚年与布尔什维克在革命策略上分歧，可设"争议与评价"专节。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>列宁</span> · <span>马克思</span> · <span>恩格斯</span></p>
+        </article>
+
+        <!-- 02 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">片</span>
+            <div class="cand__id">
+              <p class="cand__year">1859</p>
+              <h3 class="cand__name">片山潜</h3>
+              <p class="cand__latin">Sen Katayama · 1859–1933</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">02</span>
+          </header>
+          <p class="cand__epithet">日本共产主义运动先驱、共产国际活动家</p>
+          <ul class="cand__tags"><li class="stamp">日本</li><li class="stamp">实践</li><li class="stamp">共产国际</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>填补"共产国际中的亚洲"这一空白——馆内目前没有任何东亚以外的亚洲节点，他同时连接日本工人运动与莫斯科的国际组织。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>参与创建日本共产党（1922），为日本社会主义运动先驱。</li>
+              <li>长期驻共产国际，当选执行委员会委员。</li>
+              <li>著《日本的劳工运动》《我的一生》。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>列宁</span> · <span>季米特洛夫</span></p>
+        </article>
+
+        <!-- 03 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">李</span>
+            <div class="cand__id">
+              <p class="cand__year">1871</p>
+              <h3 class="cand__name">卡尔·李卜克内西</h3>
+              <p class="cand__latin">Karl Liebknecht · 1871–1919</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">03</span>
+          </header>
+          <p class="cand__epithet">反军国主义旗手、斯巴达克同盟创始人</p>
+          <ul class="cand__tags"><li class="stamp">德国</li><li class="stamp">反战</li><li class="stamp">斯巴达克</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>与卢森堡、蔡特金同为斯巴达克同盟核心，收他即补全"德国左派"三人组；主题上是"主要敌人在国内"的反战代表，与既有节点直接咬合。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>《军国主义与反军国主义》（1907）系统批判军国主义。</li>
+              <li>帝国议会中投票反对战争拨款者之一。</li>
+              <li>1918 年与卢森堡共同创建德国共产党；1919 年 1 月与卢森堡同日遇害。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>卢森堡</span> · <span>蔡特金</span> · <span>列宁</span></p>
+        </article>
+
+        <!-- 04 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">柯</span>
+            <div class="cand__id">
+              <p class="cand__year">1872</p>
+              <h3 class="cand__name">亚历山德拉·柯伦泰</h3>
+              <p class="cand__latin">Alexandra Kollontai · 1872–1952</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">04</span>
+          </header>
+          <p class="cand__epithet">马克思主义妇女理论家、世界首位女性政府部长</p>
+          <ul class="cand__tags"><li class="stamp">俄国</li><li class="stamp">女性</li><li class="stamp">妇女问题</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>为"妇女问题"补上第二根支柱——与蔡特金互为对照（一个偏组织与运动，一个偏理论与日常生活），也是女性理论家中深度与争议兼备的一位。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>1917 年任社会救济人民委员，为世界首位女性内阁部长。</li>
+              <li>创建并领导党的妇女工作部（Zhenotdel）。</li>
+              <li>《共产主义与家庭》（1920）提出家务社会化；后为苏联首位女大使。曾领导"工人反对派"，可设争议节。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>蔡特金</span> · <span>恩格斯</span> · <span>列宁</span></p>
+        </article>
+
+        <!-- 05 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">李</span>
+            <div class="cand__id">
+              <p class="cand__year">1889</p>
+              <h3 class="cand__name">李大钊</h3>
+              <p class="cand__latin">Li Dazhao · 1889–1927</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">05</span>
+          </header>
+          <p class="cand__epithet">中国马克思主义的先驱</p>
+          <ul class="cand__tags"><li class="stamp">中国</li><li class="stamp">理论</li><li class="stamp">建党一代</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>馆内中国线目前只有毛泽东，缺"建党一代"的源头；李大钊是"南陈北李"中的"北李"，毛泽东称其为自己转向马克思主义的引路人。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>《我的马克思主义观》（1919）最早系统介绍马克思主义。</li>
+              <li>《庶民的胜利》《布尔什维主义的胜利》（1918）欢呼十月革命。</li>
+              <li>中国共产党主要创始人之一；1927 年被奉系军阀杀害。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>马克思</span> · <span>列宁</span> · <span>毛泽东</span></p>
+        </article>
+
+        <!-- 06 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">葛</span>
+            <div class="cand__id">
+              <p class="cand__year">1891</p>
+              <h3 class="cand__name">安东尼奥·葛兰西</h3>
+              <p class="cand__latin">Antonio Gramsci · 1891–1937</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">06</span>
+          </header>
+          <p class="cand__epithet">西方马克思主义奠基人、意大利共产党创始人</p>
+          <ul class="cand__tags"><li class="stamp">意大利</li><li class="stamp">理论</li><li class="stamp">西方马克思主义</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>补上此前完全缺席的"西方马克思主义"这条理论支流；其"文化领导权"是 20 世纪最具影响力的马克思主义理论之一，也是本馆理论版图的关键缺口。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>参与创建意大利共产党（1921）。</li>
+              <li>《狱中札记》（1929—1935）提出"文化领导权（霸权）""有机知识分子""阵地战／运动战"。</li>
+              <li>1926 年被法西斯政权逮捕，1937 年狱中病逝。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>列宁</span> · <span>马克思</span> · <span>卢森堡</span></p>
+        </article>
+
+        <!-- 07 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">马</span>
+            <div class="cand__id">
+              <p class="cand__year">1894</p>
+              <h3 class="cand__name">何塞·卡洛斯·马里亚特吉</h3>
+              <p class="cand__latin">José Carlos Mariátegui · 1894–1930</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">07</span>
+          </header>
+          <p class="cand__epithet">拉美马克思主义本土化的开创者</p>
+          <ul class="cand__tags"><li class="stamp">秘鲁</li><li class="stamp">理论</li><li class="stamp">拉美本土</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>馆内拉美只有"实践者"格瓦拉，缺"理论根"；马里亚特吉主张马克思主义必须与本土现实结合，是最早把唯物史观扎根于拉美的理论家。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>《关于秘鲁国情的七篇论文》（1928）把唯物史观与印第安土地问题结合。</li>
+              <li>创办秘鲁社会党（后改共产党）与《阿毛塔》杂志。</li>
+              <li>明确反对把马克思主义当作"照抄照搬的教条"。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>马克思</span> · <span>列宁</span> · <span>格瓦拉</span></p>
+        </article>
+
+        <!-- 08 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">桑</span>
+            <div class="cand__id">
+              <p class="cand__year">1895</p>
+              <h3 class="cand__name">奥古斯托·塞萨尔·桑地诺</h3>
+              <p class="cand__latin">Augusto César Sandino · 1895–1934</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">08</span>
+          </header>
+          <p class="cand__epithet">反帝游击战争的先驱</p>
+          <ul class="cand__tags"><li class="stamp">尼加拉瓜</li><li class="stamp">实践</li><li class="stamp">游击前史</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>为格瓦拉的游击脉络提供"前史"——桑地诺领导的反美游击比古巴革命早约三十年，是拉美反帝武装斗争的原型，也让"游击中心主义"有可对话的源头。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>1927—1933 年领导尼加拉瓜人民反抗美国占领的游击战争。</li>
+              <li>拒绝屈从的《埃斯皮诺萨—蒙特罗条约》。</li>
+              <li>1934 年被暗杀；桑地诺民族解放阵线（FSLN）以其命名。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>格瓦拉</span> · <span>恩克鲁玛</span></p>
+        </article>
+
+        <!-- 09 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">恩</span>
+            <div class="cand__id">
+              <p class="cand__year">1909</p>
+              <h3 class="cand__name">克瓦米·恩克鲁玛</h3>
+              <p class="cand__latin">Kwame Nkrumah · 1909–1972</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">09</span>
+          </header>
+          <p class="cand__epithet">泛非主义领袖、"新殖民主义"理论提出者</p>
+          <ul class="cand__tags"><li class="stamp">加纳</li><li class="stamp">理论</li><li class="stamp">泛非主义</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>既是桑卡拉的直接思想前辈，也是"新殖民主义"这一非洲理论支柱的代表；收入他，整条非洲线索才能从恩克鲁玛经卡布拉尔接到桑卡拉。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>领导加纳（黄金海岸）1957 年独立，为撒哈拉以南非洲首个独立国家。</li>
+              <li>1963 年推动成立非洲统一组织（OAU）。</li>
+              <li>《新殖民主义：帝国主义的最后阶段》（1965）把列宁的帝国主义论推进到二战后；1966 年在访华途中被政变推翻。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>列宁</span> · <span>桑卡拉</span> · <span>卡布拉尔</span></p>
+        </article>
+
+        <!-- 10 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">卡</span>
+            <div class="cand__id">
+              <p class="cand__year">1924</p>
+              <h3 class="cand__name">阿米尔卡·卡布拉尔</h3>
+              <p class="cand__latin">Amílcar Cabral · 1924–1973</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">10</span>
+          </header>
+          <p class="cand__epithet">民族解放战争的理论家与实践者</p>
+          <ul class="cand__tags"><li class="stamp">几内亚比绍</li><li class="stamp">实践</li><li class="stamp">民族解放</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>补上"葡属非洲"的民族解放理论与实践，与恩克鲁玛、桑卡拉共同构成非洲三角；其"回到源头"与桑卡拉的泛非主义构成同代对话。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>创建并领导几内亚和佛得角非洲独立党（PAIGC），领导武装斗争。</li>
+              <li>提出"民族解放与文化""回到源头"及对农村阶级的分析。</li>
+              <li>1973 年被暗杀，其斗争直接促成几内亚比绍 1974 年独立。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>桑卡拉</span> · <span>恩克鲁玛</span> · <span>马克思</span></p>
+        </article>
+
+        <!-- 11 -->
+        <article class="cand">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">卡</span>
+            <div class="cand__id">
+              <p class="cand__year">1926</p>
+              <h3 class="cand__name">菲德尔·卡斯特罗</h3>
+              <p class="cand__latin">Fidel Castro · 1926–2016</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">11</span>
+          </header>
+          <p class="cand__epithet">古巴革命领袖</p>
+          <ul class="cand__tags"><li class="stamp">古巴</li><li class="stamp">实践</li><li class="stamp">与格瓦拉成对</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>馆内已有格瓦拉却没有卡斯特罗——古巴革命缺了主角。两人是同一事件的两面，只收其一而不收其一，谱系上是残缺的。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>1953 年"七二六"起义，1959 年领导古巴革命胜利。</li>
+              <li>《历史将宣判我无罪》（1953）为拉美反帝的经典文献。</li>
+              <li>长期领导古巴社会主义建设，并以医疗、教育与军事援助支持亚非拉民族解放（一党体制、言论管控等争议可如实设节）。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>格瓦拉</span> · <span>列宁</span> · <span>桑卡拉</span></p>
+        </article>
+
+        <!-- 12 -->
+        <article class="cand cand--host">
+          <header class="cand__head">
+            <span class="cand__plate" aria-hidden="true">桑</span>
+            <div class="cand__id">
+              <p class="cand__year">1949</p>
+              <h3 class="cand__name">托马斯·桑卡拉</h3>
+              <p class="cand__latin">Thomas Sankara · 1949–1987</p>
+            </div>
+            <span class="cand__no" aria-hidden="true">12</span>
+          </header>
+          <p class="cand__epithet">泛非主义革命家 ★ 本件范例</p>
+          <ul class="cand__tags"><li class="stamp stamp--red">范例</li><li class="stamp">布基纳法索</li><li class="stamp">非洲</li></ul>
+          <div class="cand__block">
+            <h4>入选理由</h4>
+            <p>见前节——六项标准逐条通过，并一次补齐地域、代际、议题三重空白；"贡献与争议并存"，可完整对应本馆体例。</p>
+          </div>
+          <div class="cand__block">
+            <h4>代表性贡献</h4>
+            <ul>
+              <li>领导 1983 年"八四革命"；土地改革与粮食自给；拒绝外债。</li>
+              <li>妇女解放（禁割礼、废一夫多妻、首位任命女性入阁）；全国扫盲与儿童疫苗。</li>
+              <li>"绿色长城"生态工程构想，后为非洲联盟采纳。</li>
+            </ul>
+          </div>
+          <p class="cand__link"><b>可挂接</b> <span>格瓦拉</span> · <span>恩克鲁玛</span> · <span>卡布拉尔</span> · <span>卡斯特罗</span></p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================= 04 边界 ================= -->
+    <section class="block" id="edges" aria-labelledby="edges-h">
+      <div class="block__head">
+        <span class="block__no">04</span>
+        <h2 id="edges-h">边界：暂缓与备选</h2>
+        <span class="block__sub">Sieve</span>
+      </div>
+      <p class="block__intro">
+        标准若只用来"收纳"而不用来"筛除"，就不成其为标准。以下两类，是有意未列入十二人名单的：
+        一类因体例冲突暂缓，一类作为替补待命。
+      </p>
+
+      <div class="edges">
+        <article class="edge edge--hold">
+          <h3>暂缓：体例冲突，建议另立专题</h3>
+          <ul>
+            <li><b>约瑟夫·斯大林 / 列夫·托洛茨基</b>——二人均处国际共运的核心位置，但历史评价分歧极大、论战脉络与文献体量远超单张档案卡片的承载能力。建议以<b>专题条目或对照条目</b>另立，而非并入人物名单。</li>
+            <li><b>涉及国别史叙述有特殊性的领袖</b>——暂不并入，留待专题评估。</li>
+          </ul>
+        </article>
+        <article class="edge edge--bench">
+          <h3>备选：本轮未列入，可随时替补</h3>
+          <ul>
+            <li><b>奥古斯特·倍倍尔</b>（德国）——妇女观源头之一，《妇女与社会主义》。</li>
+            <li><b>向警予</b>（中国）——中共妇女运动先驱，补女性与中国双维度。</li>
+            <li><b>沃尔特·罗德尼</b>（圭亚那）——《欧洲如何使非洲欠发达》，泛非主义经济学。</li>
+            <li><b>萨莫拉·马谢尔</b>（莫桑比克）——民族解放与国家建设。</li>
+            <li><b>威廉·李卜克内西</b>（德国）——德国社会民主党元老。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= 05 落地 ================= -->
+    <section class="block" id="playbook" aria-labelledby="playbook-h">
+      <div class="block__head">
+        <span class="block__no">05</span>
+        <h2 id="playbook-h">若采纳入馆：落地清单</h2>
+        <span class="block__sub">Playbook</span>
+      </div>
+      <p class="block__intro">
+        名单只是起点。按本馆体例，每一位新人入档都须一并完成下列事项，否则构建期的校验会失败。
+        这份清单即《内容编写》一节的复述，供逐人核对。
+      </p>
+
+      <ol class="checklist">
+        <li>新建 <code>content/people/&lt;slug&gt;.md</code>，front-matter 补齐 <code>slug/name/birth/death/…</code>，正文补齐七个固定部分：生平年表、简介、政治贡献、经济贡献、文化贡献、思想体系、争议与评价。</li>
+        <li>每人至少一部著作入 <code>works.yaml</code>，标注所据版本并附外部阅读链接（仅收录摘录，不收录受版权保护的全文）。</li>
+        <li><code>birth</code> 必须填写完整（ISO 8601，排序依据）；在 <code>relations.yaml</code> 建立至少一条真实关系边，构建期会校验两端人物存在。</li>
+        <li>肖像：<code>&lt;slug&gt;.jpg</code> / <code>.webp</code>（480×480）放入 <code>web/public/assets/portraits/</code>，并在 <code>portraits.ts</code> 与 <code>CREDITS.md</code> 登记摄影者、年代、来源与许可。</li>
+        <li>无照片者须在 <code>PortraitArt.vue</code> 补一个 <code>v-else-if</code> 分支，否则会套用其他人物的矢量插画。</li>
+        <li>同步"累计人数"文案：<code>content/site.yaml</code>、<code>site.ts</code>、<code>ModuleGrid.vue</code>、<code>PeopleView.vue</code>、<code>AboutView.vue</code>、<code>TimelineView.vue</code>、<code>README.md</code>，以及 <code>web/scripts/*.mts</code>、<code>scripts/smoke.ps1</code> 与后端 <code>parse_test.go</code>、<code>api_test.go</code> 的数量断言。</li>
+        <li>涉及的事件补入 <code>events/timeline.yaml</code>，并相应延伸年表的时间上界（现为 1969／1967）；本名单若全部采纳，上界将推进到 2016 年。</li>
+      </ol>
+    </section>
+
+    <!-- ================= 尾注 ================= -->
+    <section class="closing" aria-label="结语">
+      <blockquote>「全世界无产者，联合起来！」</blockquote>
+      <div class="footnote">
+        <p>
+          本件为<b>策展建议</b>，非正式收录决定。所有史实、时间与称谓均据公开史料整理，
+          人物生卒年与著作年代以通行记载为准；存在历史评价分歧者，正式入档时须如实设立"争议与评价"专节。
+        </p>
+        <p>
+          编排说明：候选人按 <span class="mono">birth</span> 升序排列，与馆内人物列表、关系图环形布局采用同一顺序来源，
+          便于横向对照；卡片中的序号即该顺序位次，非重要性排序。视觉沿用站点既有的"构成主义 × 新粗野主义"令牌与公有领域肖像规范。
+        </p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+</body>
+</html>

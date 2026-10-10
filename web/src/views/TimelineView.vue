@@ -28,7 +28,7 @@ const catColor = (c: string) =>
       no="03"
       title="国际共运大事年表"
       sub="Timeline"
-      lead="从 1848 年《共产党宣言》发表到 1969 年胡志明逝世，记录国际共产主义运动的理论发展与实践历程。可按范畴与人物筛选。"
+      lead="从 1848 年《共产党宣言》发表到 2016 年卡斯特罗逝世，记录国际共产主义运动的理论发展与实践历程。可按范畴与人物筛选。"
     />
     <section class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
       <div class="mb-4 flex flex-wrap gap-2">
