@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"net"
 	"net/http"
+	"strings"
 	"sync"
 	"time"
 )
@@ -58,12 +59,18 @@ func (l *rateLimiter) allow(key string) bool {
 	return true
 }
 
-// withRateLimit 对全部请求做 IP 级限流；超限返回 429。
+// withRateLimit 对 /api/ 下的请求做 IP 级限流；超限返回 429。
+//
+// 只覆盖 API 面。限流的目标是保护 CPU 密集的降级检索路径与数据库读写，
+// 而静态资源与 SPA 外壳只是一次 embed.FS 读取。
+// 早先的实现把限流套在整个 mux 上，于是浏览一个页面就会抽干突发额度
+// （首页约 13 个请求，其中多数是肖像图），图片随机变成 429；
+// smoke.ps1 的静态资源段因此全线失败。见 TestRateLimitSkipsStaticAssets。
 func (s *Server) withRateLimit(next http.Handler) http.Handler {
 	// 平均 20 req/s，突发 60：足够正常浏览，又能压住脚本化滥用。
 	limiter := newRateLimiter(20, 60)
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if !limiter.allow(clientIP(r)) {
+		if strings.HasPrefix(r.URL.Path, "/api/") && !limiter.allow(clientIP(r)) {
 			s.log.WarnContext(r.Context(), "请求被限流", "path", r.URL.Path, "ip", clientIP(r))
 			writeJSON(w, http.StatusTooManyRequests, map[string]string{"error": "请求过于频繁，请稍后重试"})
 			return

@@ -34,10 +34,30 @@ function Check {
     }
 }
 
+# 请求 /api/*，遇 429 短暂退避后重试（最多 3 次）。
+#
+# 服务端的限流是 20 req/s、突发 60，且**只覆盖 /api/**（见 README 技术决策记录）。
+# 本轮冒烟会连续发出五十余次 API 请求，比任何真实浏览行为都密，令牌桶见底属于预期——
+# 这是被测行为正确，而不是产品缺陷，故按良好客户端的做法退避重试。
+#
+# 刻意只对 /api/ 生效：静态资源与 SPA 外壳走下面的 Invoke-WebRequest，不做重试。
+# 它们一旦返回 429，就说明限流器把静态资源也算了进去，必须如实报错而不是被重试掩盖。
+function Invoke-Api {
+    param([string]$Path)
+    for ($attempt = 1; ; $attempt++) {
+        try {
+            return Invoke-WebRequest "$BaseUrl$Path" -UseBasicParsing
+        } catch {
+            if ($_.Exception.Response.StatusCode.value__ -ne 429 -or $attempt -ge 3) { throw }
+            Start-Sleep -Milliseconds (250 * $attempt)
+        }
+    }
+}
+
 # 取回并解析 JSON（数组不会丢失长度信息）
 function Api {
     param([string]$Path)
-    $resp = Invoke-WebRequest "$BaseUrl$Path" -UseBasicParsing
+    $resp = Invoke-Api $Path
     if ($resp.Content.Trim() -eq "") { return @() }
     return ($resp.Content | ConvertFrom-Json)
 }
@@ -50,7 +70,7 @@ Write-Host "星火档案馆 冒烟测试 -> $BaseUrl" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "API 端点" -ForegroundColor Yellow
 Check "GET /api/health 返回 200" {
-    (Invoke-WebRequest "$BaseUrl/api/health" -UseBasicParsing).StatusCode -eq 200
+    (Invoke-Api "/api/health").StatusCode -eq 200
 }
 Check "GET /api/meta 人物数为 15" {
     $m = Api "/api/meta"
@@ -177,15 +197,15 @@ Check "FTS 语法字符不导致 500" {
 Write-Host ""
 Write-Host "错误处理" -ForegroundColor Yellow
 Check "不存在的人物返回 404" {
-    try { Invoke-WebRequest "$BaseUrl/api/people/nobody" -UseBasicParsing | Out-Null; $false }
+    try { Invoke-Api "/api/people/nobody" | Out-Null; $false }
     catch { $_.Exception.Response.StatusCode.value__ -eq 404 }
 }
 Check "不存在的著作返回 404" {
-    try { Invoke-WebRequest "$BaseUrl/api/works/nobody" -UseBasicParsing | Out-Null; $false }
+    try { Invoke-Api "/api/works/nobody" | Out-Null; $false }
     catch { $_.Exception.Response.StatusCode.value__ -eq 404 }
 }
 Check "不存在的术语返回 404" {
-    try { Invoke-WebRequest "$BaseUrl/api/terms/nobody" -UseBasicParsing | Out-Null; $false }
+    try { Invoke-Api "/api/terms/nobody" | Out-Null; $false }
     catch { $_.Exception.Response.StatusCode.value__ -eq 404 }
 }
 
