@@ -36,6 +36,9 @@ docker run -d --name sparkarchive -p 12026:12026 \
 
 镜像已把前端产物与数据库烘焙在内，运行时只读，不挂任何卷。
 
+> **Windows 提示**：在 Git Bash 下执行上面的 `docker run` 时，`--tmpfs /tmp` 会被 MSYS 改写成本地路径
+> 并报 `invalid mount path`。加 `MSYS_NO_PATHCONV=1` 前缀即可（PowerShell / CMD 无此问题）。
+
 > **提示 1（端口）**：本项目端口统一为 **12026**。刻意避开过常见的 1226 —— 该端口容易被本机
 > 其他软件（如微信输入法 `wetype_server.exe`）占用。一旦宿主机目标端口被占，Docker 会**静默跳过
 > 端口绑定**：容器照常启动且显示 `healthy`，但访问时却是「拒绝连接」。若遇到此现象，
